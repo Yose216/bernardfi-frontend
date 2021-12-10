@@ -6,9 +6,9 @@ import useI18n from '../../hooks/useI18n'
 import Input, { InputProps } from '../Input'
 
 interface TokenInputProps extends InputProps {
-  max: number | string
-  symbol: string
-  onSelectMax?: () => void
+  max: number | string,
+  symbol: string,
+  onSelectMax?: () => void,
   depositFeeBP?: number
 }
 

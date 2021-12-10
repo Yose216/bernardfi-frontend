@@ -1,9 +1,11 @@
+// @ts-nocheck
+
 import React from 'react'
 import styled from 'styled-components'
 import { ChevronDownIcon, ChevronUpIcon, Text } from '@pancakeswap-libs/uikit'
 
 export interface ExpandableSectionButtonProps {
-  onClick?: () => void
+  onClick?: () => void,
   expanded?: boolean
 }
 

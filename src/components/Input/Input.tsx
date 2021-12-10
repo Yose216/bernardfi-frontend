@@ -2,10 +2,10 @@ import React from 'react'
 import styled from 'styled-components'
 
 export interface InputProps {
-  endAdornment?: React.ReactNode
-  onChange: (e: React.FormEvent<HTMLInputElement>) => void
-  placeholder?: string
-  startAdornment?: React.ReactNode
+  endAdornment?: React.ReactNode,
+  onChange: (e: React.FormEvent<HTMLInputElement>) => void,
+  placeholder?: string,
+  startAdornment?: React.ReactNode,
   value: string
 }
 

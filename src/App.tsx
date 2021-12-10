@@ -13,7 +13,11 @@ import NftGlobalNotification from './views/Nft/components/NftGlobalNotification'
 // Only pool is included in the main bundle because of it's the most visited page'
 const Home = lazy(() => import('./views/Home'))
 const Farms = lazy(() => import('./views/Farms'))
-// const Lottery = lazy(() => import('./views/Lottery'))
+const Algo = lazy(() => import('./views/Algo'))
+const BarryFoundation = lazy(() => import('./views/BarryFoundation'))
+const BFC = lazy(() => import('./views/BFC'))
+const Info = lazy(() => import('./views/Info'))
+const Lottery = lazy(() => import('./views/Lottery'))
 // const Pools = lazy(() => import('./views/Pools'))
 // const Ifos = lazy(() => import('./views/Ifos'))
 const NotFound = lazy(() => import('./views/NotFound'))
@@ -51,6 +55,27 @@ const App: React.FC = () => {
             <Route path="/nests">
               <Farms tokenMode/>
             </Route>
+
+            <Route path="/algo">
+              <Algo />
+            </Route>
+
+            <Route path="/barry-foundation">
+              <BarryFoundation />
+            </Route>
+            <Route path="/bfc">
+              <BFC />
+            </Route>
+            <Route path="/infos">
+              <Info />
+            </Route>
+            <Route path="/lottery">
+              <Lottery />
+            </Route>
+            {/*
+
+
+            */}
             {/* <Route path="/pools"> */}
             {/*  <Pools /> */}
             {/* </Route> */}
