@@ -5,9 +5,11 @@ import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
 import { Image, Heading } from '@pancakeswap-libs/uikit'
+import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
+import Container from 'components/layout/Container'
 import { useFarms, usePriceBnbBusd, usePriceCakeBusd } from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
@@ -46,7 +48,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const stakedOnlyFarms = activeFarms.filter(
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
   )
-
+console.log(stakedOnlyFarms)
   // /!\ This function will be removed soon
   // This function compute the APY for each farm and will be replaced when we have a reliable API
   // to retrieve assets prices against USD
@@ -90,33 +92,68 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   )
 
   return (
-    <Page>
-      <Heading as="h1" size="lg" color="primary" mb="50px" style={{ textAlign: 'center' }}>
-        {
-          tokenMode ?
-            TranslateString(10002, 'Stake tokens to earn EGG')
-            :
-          TranslateString(320, 'Stake LP tokens to earn EGG')
-        }
-      </Heading>
-      <Heading as="h2" color="secondary" mb="50px" style={{ textAlign: 'center' }}>
-        {TranslateString(10000, 'Deposit Fee will be used to buyback EGG')}
-      </Heading>
+    <Page >
+      <Outer>
+        <Inner>
+          <Heading as="h1" size="lg" color="primary" mb="25px" style={{ textAlign: 'center' }}>
+            {
+              tokenMode ?
+                'Stake tokens to earn $BONES'
+                :
+                'Stake LP tokens to earn $BONES'
+            }
+          </Heading>
+          <Heading as="h2" color="text" style={{ textAlign: 'center' }}>
+            Deposit Fee will be used to buyback $BONES
+          </Heading>
+        </Inner>
+      </Outer>
+
+
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
-      <div>
+      <div >
         <Divider />
-        <FlexLayout>
+        <FlexFarm >
           <Route exact path={`${path}`}>
             {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
           </Route>
           <Route exact path={`${path}/history`}>
             {farmsList(inactiveFarms, true)}
           </Route>
-        </FlexLayout>
+        </FlexFarm>
       </div>
-      <Image src="/images/egg/8.png" alt="illustration" width={1352} height={587} responsive />
     </Page>
   )
 }
+
+const Outer = styled.div`
+  background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
+  margin-bottom: 50px;
+`
+
+const Inner = styled(Container)`
+  padding-top: 80px;
+  padding-bottom: 32px;
+  height: 250px;
+  & h1 {
+    @media screen and (max-width: 768px) {
+      font-size: 30px!important;
+
+    }
+  }
+`
+
+const FlexFarm = styled.div`
+display: flex;
+justify-content: center;
+flex-wrap: wrap;
+& > * {
+  min-width: 280px;
+  max-width: 28%;
+  width: 100%;
+  margin: 0 30px;
+  margin-bottom: 32px;
+}
+`
 
 export default Farms
