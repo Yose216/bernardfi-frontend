@@ -103,6 +103,7 @@ const ExpandingWrapper = styled.div<{ expanded: boolean }>`
   overflow: hidden;
 `
 
+
 interface FarmCardProps {
   farm: FarmWithStakedValue
   removed: boolean
@@ -155,6 +156,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       {farm.level === 'classic' && <StyledCardAccentClassic />}
       {farm.level === 'super' && <StyledCardAccentSuper />}
       {farm.level === 'public' && <StyledCardAccent />}
+
       <CardHeading
         lpLabel={lpLabel}
         multiplier={farm.multiplier}

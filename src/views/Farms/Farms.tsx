@@ -4,7 +4,8 @@ import { useDispatch } from 'react-redux'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { Image, Heading } from '@pancakeswap-libs/uikit'
+import Countdown from 'react-countdown';
+import { Image, Heading, Text, Flex } from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
@@ -91,6 +92,23 @@ console.log(stakedOnlyFarms)
     [bnbPrice, account, cakePrice, ethereum],
   )
 
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (days !== 0) {
+      return (
+
+        <Heading as="h5" size="lg" color="secondary">
+          {days} days and {hours} hours remainings
+        </Heading>
+      )
+    }
+    return (
+
+      <Heading as="h5" size="lg" color="secondary">
+        {hours}:{minutes}:{seconds} until the airdrop
+      </Heading>
+    )
+};
+
   return (
     <Page >
       <Outer>
@@ -121,6 +139,30 @@ console.log(stakedOnlyFarms)
             {farmsList(inactiveFarms, true)}
           </Route>
         </FlexFarm>
+      </div>
+      <div>
+        <Divider />
+        <Section>
+          <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
+            <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
+              <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Claim your NFT airdrop !</span></Heading>
+              <Text>
+                Hold/stake BONES-BUSD LP tokens and claim your NFT airdrop !<br/>
+                This Bronze BONES Special Edition helmet is the first piece of equipment you can get for our incoming game The Bernardo Fight Club. You can claim yours if you hold X LP tokens (TBD) until X of X. This NFT opens gates to Bronze bernardswap staking pools.
+              </Text>
+              <Text mt="15px">
+                <Countdown date={Date.now() + 1000000000} renderer={renderer}/>
+              </Text>
+            </FlexSecondSection>
+            <Flex flexDirection="column">
+              <video autoPlay muted playsInline loop width="250" >
+                <track default kind="captions" srcLang="en" src="/media/examples/friday.vtt" />
+                <source src="/images/viking-helmet-BFC.mp4" type="video/mp4" />
+
+              </video>
+            </Flex>
+          </FlexSection>
+        </Section>
       </div>
     </Page>
   )
@@ -155,5 +197,31 @@ flex-wrap: wrap;
   margin-bottom: 32px;
 }
 `
+const Section = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  padding-bottom: 30px;
+  &.middle {
+    background: linear-gradient(130deg, #191919 30%, #548d65 100%);
+  }
 
+`
+const FlexSection = styled(Flex)`
+  width: 60%;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+`
+const FlexSecondSection = styled(Flex)`
+  width: 60%;
+  @media screen and (max-width: 768px) {
+    width: 90%;
+  }
+
+`
 export default Farms
