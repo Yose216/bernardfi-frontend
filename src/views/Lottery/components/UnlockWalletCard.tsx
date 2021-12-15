@@ -26,7 +26,7 @@ const UnlockWalletCard = () => {
   const TranslateString = useI18n()
 
   return (
-    <Card isActive>
+    <Card>
       <StyledCardBody>
         <IconWrapper>
           <Ticket />

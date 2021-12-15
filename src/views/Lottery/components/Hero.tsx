@@ -6,7 +6,7 @@ import Container from 'components/layout/Container'
 import LotteryProgress from './LotteryProgress'
 
 const Title = styled(Heading).attrs({ as: 'h1', size: 'xl' })`
-  color: ${({ theme }) => theme.colors.secondary};
+  color: #ffbd00;
   margin-bottom: 24px;
 `
 
@@ -17,15 +17,20 @@ const Blurb = styled(Text)`
 `
 
 const StyledHero = styled.div`
-  background-image: linear-gradient(180deg, #53dee9 0%, #1fc7d4 100%);
+  background-image: linear-gradient(139.73deg, #27262cb3 0%, #008611 100%);
   padding-bottom: 40px;
   padding-top: 40px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+
 `
 
 const StyledContainer = styled(Container)`
   display: flex;
-
   flex-direction: column;
+  width: 90%;
+  justify-content: center;
 
   ${({ theme }) => theme.mediaQueries.sm} {
     flex-direction: row;
@@ -70,8 +75,8 @@ const Hero = () => {
     <StyledHero>
       <StyledContainer>
         <LeftWrapper>
-          <Title>{TranslateString(999, 'The CAKE Lottery')}</Title>
-          <Blurb>{TranslateString(999, 'Buy tickets with CAKE')}</Blurb>
+          <Title>Bernard Finance Lottery</Title>
+          <Blurb>Buy tickets with $BONES</Blurb>
           <Blurb>{TranslateString(999, 'Win if 2, 3, or 4 of your ticket numbers match!')}</Blurb>
         </LeftWrapper>
         <RightWrapper>

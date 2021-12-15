@@ -23,7 +23,7 @@ const WinningNumbers: React.FC = () => {
             <StyledCardHeader>
               <Title>
                 {account && lotteryHasDrawn
-                  ? `🥳${TranslateString(570, 'Winning Numbers This Round')}🥳`
+                  ? `${TranslateString(570, 'Winning Numbers This Round')}`
                   : TranslateString(572, 'Latest Winning Numbers')}
               </Title>
               <br />
@@ -36,50 +36,6 @@ const WinningNumbers: React.FC = () => {
                 </TicketNumberBox>
               ))}
             </Row>
-            <RabbitRow>
-              <RabbitBox>
-                <CardImageFirst>
-                  <Image src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={150} responsive />
-                </CardImageFirst>
-              </RabbitBox>
-              <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBox>
-              <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBox>
-              <RabbitBox>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 4@2x.png" alt="Number 4" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBox>
-            </RabbitRow>
-            <RabbitRowSmall>
-              <RabbitBoxSmall>
-                <CardImageFirst>
-                  <Image src="/images/sign bunny 1@2x.png" alt="Number 1" width={200} height={150} responsive />
-                </CardImageFirst>
-              </RabbitBoxSmall>
-              <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 2@2x.png" alt="Number 2" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBoxSmall>
-              <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 3@2x.png" alt="Number 3" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBoxSmall>
-              <RabbitBoxSmall>
-                <CardImage style={{ marginLeft: '-1.2em' }}>
-                  <Image src="/images/sign bunny 4@2x.png" alt="Number 4" width={200} height={150} responsive />
-                </CardImage>
-              </RabbitBoxSmall>
-            </RabbitRowSmall>
             <Column>
               <RowNoPadding>
                 <CenteredTextWithPadding>{TranslateString(442, 'Tickets matching 4 numbers:')}</CenteredTextWithPadding>
@@ -100,15 +56,13 @@ const WinningNumbers: React.FC = () => {
                 </CenteredTextWithPadding>
               </RowNoPadding>
             </Column>
-            <Link href="https://api.pancakeswap.com/api/lottery?page=0&pageSize=25" target="_blank">
-              {TranslateString(448, 'Export recent winning numbers')}
-            </Link>
           </StyledCardContentInner>
         </CardBody>
       </Card>
     </CardWrapper>
   )
 }
+
 const Link = styled.a`
   margin-top: 1em;
   text-decoration: none;
@@ -185,7 +139,7 @@ const CenteredTextWithPadding = styled.div`
 const TicketNumberBox = styled.div`
   padding: 10px;
   border-radius: 12px;
-  background: linear-gradient(180deg, #54dade 0%, #24c7d6 76.22%);
+  background: linear-gradient(130deg, #008611 10%, #ffbd00 60%);
   color: white;
   font-size: 20px;
   font-weight: 900;
@@ -201,7 +155,6 @@ const TicketNumberBox = styled.div`
 `
 
 const RabbitBox = styled.div`
-  /* padding: 10px; */
   border-radius: 12px;
   margin: 16px 20px;
   width: 60px;
@@ -224,7 +177,7 @@ const StyledCardHeader = styled.div`
 const CardWrapper = styled.div``
 
 const Title = styled.div`
-  color: ${(props) => props.theme.colors.secondary};
+  color: ${(props) => props.theme.colors.primary};
   font-size: 24px;
   width: 50vw;
   text-align: center;

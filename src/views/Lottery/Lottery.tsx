@@ -60,7 +60,7 @@ const Lottery: React.FC = () => {
   return (
     <>
       <Hero />
-      <Page>
+      <Page style={{padding: '50px'}}>
         <Wrapper>
           <ButtonMenu activeIndex={activeIndex} onClick={handleClick} size="sm" variant="subtle">
             <ButtonMenuItem>{TranslateString(999, 'Next draw')}</ButtonMenuItem>

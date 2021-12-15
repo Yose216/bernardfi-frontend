@@ -15,8 +15,9 @@ interface CardProps {
 const StyledCard = styled(Card)<CardProps>`
   ${(props) =>
     props.isSecondCard
-      ? `  
+      ? `
         margin-top: 16px;
+
 
         ${props.theme.mediaQueries.sm} {
           margin-top: 24px;

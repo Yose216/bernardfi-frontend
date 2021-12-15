@@ -1,13 +1,24 @@
 import React from 'react'
+import BigNumber from 'bignumber.js'
 import styled from 'styled-components'
 import { Heading, Text, BaseLayout, Flex, Button, Card, CardBody, CardHeader, FarmIcon, TicketFillIcon, VoteIcon } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import { provider } from 'web3-core'
+import { useFarms, usePriceBnbBusd, usePriceCakeBusd } from 'state/hooks'
+import { useTotalRewards } from 'hooks/useTickets'
 import Page from 'components/layout/Page'
+import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
+import { QuoteToken } from 'config/constants/types'
+import useTokenBalance from 'hooks/useTokenBalance'
+import { getBalanceNumber } from 'utils/formatBalance'
+import { getCakeAddress } from 'utils/addressHelpers'
 import FarmStakingCard from './components/FarmStakingCard'
 import LotteryCard from './components/LotteryCard'
 import CakeStats from './components/CakeStats'
 import TotalValueLockedCard from './components/TotalValueLockedCard'
 import TwitterCard from './components/TwitterCard'
+
 
 const Hero = styled.div`
   align-items: center;
@@ -96,6 +107,52 @@ const CardHero = styled(Card)`
 
 const Home: React.FC = () => {
   const TranslateString = useI18n()
+  const farmsLP = useFarms()
+  const cakePrice = usePriceCakeBusd()
+  const bnbPrice = usePriceBnbBusd()
+  const bonesBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
+  let lotteryPrizeAmount = 0
+  if (cakePrice.toString() > 0) {
+    lotteryPrizeAmount = +(getBalanceNumber(useTotalRewards()).toFixed(0)) * cakePrice.toString()
+  }
+  const lotteryPrizeWithCommaSeparators = lotteryPrizeAmount.toLocaleString(undefined, {
+      maximumFractionDigits: 2,
+    })
+
+  const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
+  const activeFarms = farmsLP.filter((farm) => !farm.isTokenOnly && farm.multiplier !== '0X')
+
+  let superApy = 0;
+  const bestApy = activeFarms.map((farm) => {
+    const cakeRewardPerBlock = new BigNumber(farm.BONESPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
+    const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
+
+    let apy = cakePrice.times(cakeRewardPerYear);
+    let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
+
+    if (farm.quoteTokenSymbol === QuoteToken.BNB) {
+      totalValue = totalValue.times(bnbPrice);
+    }
+
+    if(totalValue.comparedTo(0) > 0){
+      apy = apy.div(totalValue);
+    }
+
+    const farmAPY = apy && apy.times(new BigNumber(100)).toNumber()
+
+    if (farmAPY && farmAPY > superApy) {
+      superApy = farmAPY;
+    }
+
+    return 0;
+  })
+
+  const superApyFormated = superApy.toLocaleString(undefined, {
+      maximumFractionDigits: 0,
+    })
+
+  console.log()
+
 
   return (
     <Page>
@@ -126,7 +183,7 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Earn up to</Heading>
-                  <Heading size="lg" color="secondary">480%</Heading>
+                  <Heading size="lg" color="secondary">{superApyFormated}%</Heading>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
@@ -152,7 +209,7 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Amount of prize to win</Heading>
-                  <Heading size="lg" color="#008611">$120,000%</Heading>
+                  <Heading size="lg" color="#008611">${lotteryPrizeWithCommaSeparators}</Heading>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
@@ -178,7 +235,7 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Your $BONES available</Heading>
-                  <Heading size="lg" color="#ffc00b">12456</Heading>
+                  <Heading size="lg" color="#ffc00b">{bonesBalance}</Heading>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
