@@ -5,72 +5,89 @@ const farms: FarmConfig[] = [
   {
     pid: 0,
     risk: 5,
-    lpSymbol: 'BONES-BUSD LP',
-    lpAddresses: {
-      97: '',
-      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
-    },
-    tokenSymbol: 'EGG',
-    tokenAddresses: {
-      97: '',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-    level: 'public',
-  },
-  {
-    pid: 1,
-    risk: 5,
     lpSymbol: 'BONES-BNB LP',
     lpAddresses: {
-      97: '',
-      56: '0xd1b59d11316e87c3a0a069e80f590ba35cd8d8d3',
+      97: '0x3e60365d098E33c037699F53b733CDE21AfeFa9e',
+      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
     },
-    tokenSymbol: 'EGG',
+    tokenSymbol: 'BONES',
     tokenAddresses: {
-      97: '',
+      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
       56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,
-    level: 'classic',
+    level: 'bronze'
   },
-  {
-    pid: 2,
-    risk: 3,
-    lpSymbol: 'BONES-BUSD LP',
-    lpAddresses: {
-      97: '',
-      56: '0x1b96b92314c44b159149f7e0303511fb2fc4774f',
-    },
-    tokenSymbol: 'BNB',
-    tokenAddresses: {
-      97: '',
-      56: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-    level: 'bronze',
-
-  },
-  {
-    pid: 3,
-    risk: 1,
-    lpSymbol: 'BONES-BUSD LP',
-    lpAddresses: {
-      97: '',
-      56: '0xc15fa3e22c912a276550f3e5fe3b0deb87b55acd',
-    },
-    tokenSymbol: 'USDT',
-    tokenAddresses: {
-      97: '',
-      56: '0x55d398326f99059ff775485246999027b3197955',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-    level: 'super',
-  },
+  // {
+  //   pid: 0,
+  //   risk: 5,
+  //   lpSymbol: 'BONES-BUSD LP',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BUSD,
+  //   quoteTokenAdresses: contracts.busd,
+  //   level: 'public',
+  // },
+  // {
+  //   pid: 1,
+  //   risk: 5,
+  //   lpSymbol: 'BONES-BNB LP',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0xd1b59d11316e87c3a0a069e80f590ba35cd8d8d3',
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BNB,
+  //   quoteTokenAdresses: contracts.wbnb,
+  //   level: 'classic',
+  // },
+  // {
+  //   pid: 2,
+  //   risk: 3,
+  //   lpSymbol: 'BONES-BUSD LP',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0x1b96b92314c44b159149f7e0303511fb2fc4774f',
+  //   },
+  //   tokenSymbol: 'BNB',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BUSD,
+  //   quoteTokenAdresses: contracts.busd,
+  //   level: 'bronze',
+  //
+  // },
+  // {
+  //   pid: 3,
+  //   risk: 1,
+  //   lpSymbol: 'BONES-BUSD LP',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0xc15fa3e22c912a276550f3e5fe3b0deb87b55acd',
+  //   },
+  //   tokenSymbol: 'USDT',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0x55d398326f99059ff775485246999027b3197955',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BUSD,
+  //   quoteTokenAdresses: contracts.busd,
+  //   level: 'super',
+  // },
   // {
   //   pid: 4,
   //   risk: 2,
@@ -183,23 +200,23 @@ const farms: FarmConfig[] = [
   //   quoteTokenSymbol: QuoteToken.BNB,
   //   quoteTokenAdresses: contracts.wbnb,
   // },
-  {
-    pid: 12,
-    risk: 5,
-    isTokenOnly: true,
-    lpSymbol: 'EGG',
-    lpAddresses: {
-      97: '',
-      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019', // EGG-BUSD LP
-    },
-    tokenSymbol: 'EGG',
-    tokenAddresses: {
-      97: '',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
-    },
-    quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.busd,
-  },
+  // {
+  //   pid: 12,
+  //   risk: 5,
+  //   isTokenOnly: true,
+  //   lpSymbol: 'BONES',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019', // BONES-BUSD LP
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BUSD,
+  //   quoteTokenAdresses: contracts.busd,
+  // },
   // {
   //   pid: 13,
   //   risk: 1,
@@ -207,7 +224,7 @@ const farms: FarmConfig[] = [
   //   lpSymbol: 'BUSD',
   //   lpAddresses: {
   //     97: '',
-  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019', // EGG-BUSD LP (BUSD-BUSD will ignore)
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019', // BONES-BUSD LP (BUSD-BUSD will ignore)
   //   },
   //   tokenSymbol: 'BUSD',
   //   tokenAddresses: {
@@ -370,25 +387,25 @@ const farms: FarmConfig[] = [
   //   quoteTokenSymbol: QuoteToken.BUSD,
   //   quoteTokenAdresses: contracts.busd,
   // },
-  {
-    pid: 23,
-    risk: 3,
-    isTokenOnly: true,
-    lpSymbol: 'AUTO',
-    lpAddresses: {
-      97: '',
-      56: '0x4d0228ebeb39f6d2f29ba528e2d15fc9121ead56', // AUTO-BNB LP
-    },
-    tokenSymbol: 'AUTO',
-    tokenAddresses: {
-      97: '',
-      56: '0xa184088a740c695e156f91f5cc086a06bb78b827',
-    },
-    quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.wbnb,
-    level: 'public',
-
-  },
+  // {
+  //   pid: 23,
+  //   risk: 3,
+  //   isTokenOnly: true,
+  //   lpSymbol: 'AUTO',
+  //   lpAddresses: {
+  //     97: '',
+  //     56: '0x4d0228ebeb39f6d2f29ba528e2d15fc9121ead56', // AUTO-BNB LP
+  //   },
+  //   tokenSymbol: 'AUTO',
+  //   tokenAddresses: {
+  //     97: '',
+  //     56: '0xa184088a740c695e156f91f5cc086a06bb78b827',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BNB,
+  //   quoteTokenAdresses: contracts.wbnb,
+  //   level: 'public',
+  //
+  // },
 ]
 
 export default farms

@@ -23,9 +23,13 @@ const Menu = (props) => {
       currentLang={selectedLanguage && selectedLanguage.code}
       langs={allLanguages}
       setLang={setSelectedLanguage}
-      cakePriceUsd={cakePriceUsd.toNumber()}
+      bernPriceUsd={cakePriceUsd.toNumber()}
+      barrelPriceUsd={cakePriceUsd.toNumber()}
+      bonesPriceUsd={cakePriceUsd.toNumber()}
       links={config}
-      priceLink="https://www.coingecko.com/en/coins/goose-finance"
+      bernPriceLink="https://www.coingecko.com/"
+      barrelPriceLink="https://www.coingecko.com/"
+      bonesPriceLink="https://www.coingecko.com/"
       {...props}
     />
   )

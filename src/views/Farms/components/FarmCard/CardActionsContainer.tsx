@@ -7,6 +7,8 @@ import { Button, Flex, Text } from '@pancakeswap-libs/uikit'
 import { Farm } from 'state/types'
 import { useFarmFromPid, useFarmFromSymbol, useFarmUser } from 'state/hooks'
 import useI18n from 'hooks/useI18n'
+import { useNft } from 'hooks/useTokenBalance'
+import { nftConfig } from 'config/constants'
 import UnlockButton from 'components/UnlockButton'
 import { useApprove } from 'hooks/useApprove'
 import StakeAction from './StakeAction'
@@ -34,6 +36,18 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
   const tokenAddress = tokenAddresses[process.env.REACT_APP_CHAIN_ID];
   const lpName = farm.lpSymbol.toUpperCase()
   const isApproved = account && allowance && allowance.isGreaterThan(0)
+  // const res = useNft('0x5c2903Fc47F82822C7A7cCA78146847Ef97c57D0', 1)
+
+  let available = false;
+  nftConfig.forEach(n => {
+      if (farm.level === n.level) {
+          const res = useNft(n.address, parseInt(n.id))
+          if (res && !available) {
+            available = true;
+          }
+      }
+  });
+  console.log(available)
 
   const lpContract = useMemo(() => {
     if(isTokenOnly){
@@ -55,6 +69,14 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
   }, [onApprove])
 
   const renderApprovalOrStakeButton = () => {
+    if (!available) {
+      return (
+        <Button mt="8px" fullWidth disabled={!available}>
+          Hold NFT to acces this farm
+        </Button>
+      )
+    }
+
     return isApproved ? (
       <StakeAction stakedBalance={stakedBalance} tokenBalance={tokenBalance} tokenName={lpName} pid={pid} depositFeeBP={depositFeeBP} />
     ) : (

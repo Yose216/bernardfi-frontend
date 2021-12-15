@@ -5,6 +5,7 @@ import { provider } from 'web3-core'
 import cakeABI from 'config/abi/cake.json'
 import { getContract } from 'utils/web3'
 import { getTokenBalance } from 'utils/erc20'
+import { getOwnerNft } from 'utils/erc721'
 import { getCakeAddress } from 'utils/addressHelpers'
 import useRefresh from './useRefresh'
 
@@ -25,6 +26,30 @@ const useTokenBalance = (tokenAddress: string) => {
   }, [account, ethereum, tokenAddress, fastRefresh])
 
   return balance
+}
+
+export const useNft = (nftAddress: string, nftId: number) => {
+  const [nft, setNft] = useState(false)
+  const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
+  const { fastRefresh } = useRefresh()
+
+  useEffect(() => {
+    const fetchBalance = async () => {
+      const res = await getOwnerNft(ethereum, nftAddress, account, nftId)
+      if (res === account) {
+
+        setNft(true)
+      } else {
+        setNft(false)
+      }
+    }
+
+    if (account && ethereum) {
+      fetchBalance()
+    }
+  }, [account, ethereum, nftAddress, fastRefresh, nftId])
+
+  return nft
 }
 
 export const useTotalSupply = () => {
