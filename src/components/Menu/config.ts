@@ -26,11 +26,11 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Exchange',
-        href: 'https://exchange.goosedefi.com/',
+        href: 'https://pancakeswap.finance/swap',
       },
       {
         label: 'Liquidity',
-        href: 'https://exchange.goosedefi.com/#/pool',
+        href: 'https://pancakeswap.finance/liquidity',
       },
     ],
   },
@@ -44,7 +44,7 @@ const config: MenuEntry[] = [
       },
       {
         label: 'Bets',
-        href: 'https://exchange.goosedefi.com/#/pool',
+        href: '/bets',
       },
       {
         label: 'BFC',
@@ -76,15 +76,15 @@ const config: MenuEntry[] = [
     items: [
       {
         label: 'Github',
-        href: 'https://github.com/goosedefi/',
+        href: 'https://github.com/bernardfinance/',
       },
       {
         label: 'Docs',
-        href: 'https://goosedefi.gitbook.io/goose-finance/',
+        href: 'https://gitbook.io/',
       },
       {
         label: 'Blog',
-        href: 'https://goosefinance.medium.com/',
+        href: 'https://bernardfinance.medium.com/',
       },
     ],
   },

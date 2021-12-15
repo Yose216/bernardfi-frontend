@@ -1855,7 +1855,7 @@
 
 "@pancakeswap-libs/uikit@Yose216/bernardfi-uikit":
   version "0.10.2"
-  resolved "https://codeload.github.com/Yose216/bernardfi-uikit/tar.gz/3474ada3e48685d1f6fa002416b794dc8bf62972"
+  resolved "https://codeload.github.com/Yose216/bernardfi-uikit/tar.gz/fc47fb67e91b0399a7ef077b030433dd5799998d"
   dependencies:
     "@types/lodash" "^4.14.162"
     "@types/styled-system" "^5.1.10"

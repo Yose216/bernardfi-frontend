@@ -111,9 +111,12 @@ const Home: React.FC = () => {
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
   const bonesBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
-  let lotteryPrizeAmount = 0
-  if (cakePrice.toString() > 0) {
-    lotteryPrizeAmount = +(getBalanceNumber(useTotalRewards()).toFixed(0)) * cakePrice.toString()
+  let lotteryPrizeAmount = +(getBalanceNumber(useTotalRewards()).toFixed(0))
+
+  if (cakePrice.toNumber() > 0) {
+     lotteryPrizeAmount *= cakePrice.toNumber()
+  } else {
+    lotteryPrizeAmount *= 0
   }
   const lotteryPrizeWithCommaSeparators = lotteryPrizeAmount.toLocaleString(undefined, {
       maximumFractionDigits: 2,
@@ -150,9 +153,6 @@ const Home: React.FC = () => {
   const superApyFormated = superApy.toLocaleString(undefined, {
       maximumFractionDigits: 0,
     })
-
-  console.log()
-
 
   return (
     <Page>
@@ -217,7 +217,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Button as="a" href="/farms" variant="secondary" style={{border: '2px solid #008611', color: '#008611'}}>
+                  <Button as="a" href="/lottery" variant="secondary" style={{border: '2px solid #008611', color: '#008611'}}>
                     Try it
                   </Button>
                 </div>
@@ -243,7 +243,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Button as="a" href="/farms" variant="secondary" style={{border: '2px solid #ffc00b', color: '#ffc00b'}}>
+                  <Button as="a" href="/bets" variant="secondary" style={{border: '2px solid #ffc00b', color: '#ffc00b'}}>
                     Try it
                   </Button>
                 </div>
@@ -257,10 +257,10 @@ const Home: React.FC = () => {
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Discover</span> Our NFT</Heading>
-            <Text>
+            <Text mt="10px">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a auctor lorem. Nunc porttitor vulputate luctus. Pellentesque fermentum placerat suscipit. Integer egestas nec eros ut elementum. Integer at dignissim est.
             </Text>
-            <Button as="a" href="/farms" variant="primary" >
+            <Button as="a" href="/farms" variant="primary" mt="10px" >
               Buy
             </Button>
           </FlexSecondSection>
@@ -277,10 +277,10 @@ const Home: React.FC = () => {
           </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Strong</span> Ecosystem</Heading>
-            <Text>
+            <Text mt="10px">
               Bernard Finance provide a powerful synergy for your capital.
             </Text>
-            <Button as="a" href="/farms" variant="primary" >
+            <Button as="a" href="/farms" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
@@ -292,10 +292,10 @@ const Home: React.FC = () => {
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>SOON</span> Bernardo Fight Club.</Heading>
-            <Text>
+            <Text mt="10px">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu accumsan elit, at congue ipsum. Praesent a nibh ligula.
             </Text>
-            <Button as="a" href="/farms" variant="primary" >
+            <Button as="a" href="/farms" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
