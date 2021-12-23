@@ -19,6 +19,10 @@ export default {
     56: '',
     97: '0xa9Fc342773c92FC612464156e06139C96Bb3946e',
   },
+  bets: {
+    56: '',
+    97: '0x0C2eF41aF20500187B45F8403eC38ffDfF0b77dC',
+  },
   mulltiCall: {
     56: '0x1ee38d535d541c55c9dae27b12edf090c608e6fb',
     97: '0x67ADCB4dF3931b0C5Da724058ADC2174a9844412',

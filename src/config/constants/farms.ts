@@ -17,7 +17,7 @@ const farms: FarmConfig[] = [
     },
     quoteTokenSymbol: QuoteToken.BNB,
     quoteTokenAdresses: contracts.wbnb,
-    level: 'bronze'
+    level: 'super'
   },
   // {
   //   pid: 0,

@@ -148,11 +148,11 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
             <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
               <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Claim your NFT airdrop !</span></Heading>
-              <Text>
+              <Text mt="10px">
                 Hold/stake BONES-BUSD LP tokens and claim your NFT airdrop !<br/>
                 This Bronze BONES Special Edition helmet is the first piece of equipment you can get for our incoming game The Bernardo Fight Club. You can claim yours if you hold X LP tokens (TBD) until X of X. This NFT opens gates to Bronze bernardswap staking pools.
               </Text>
-              <Text mt="15px">
+              <Text mt="10px">
                 <Countdown date={Date.now() + 1000000000} renderer={renderer}/>
               </Text>
             </FlexSecondSection>
