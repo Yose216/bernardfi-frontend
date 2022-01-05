@@ -19,19 +19,19 @@ const Info: React.FC = () => {
       </Outer>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px'}}>
         <Flex flexDirection="column" style={{width: '80%', margin: '50px 0'}} >
-          <img src="/images/test.svg" alt="info" />
 
-          <Text mb="3" mt="5" color="text">
-            Bernard.finance is a complete DEFI ecosystem that allows for multiple tokens and a complete swap, farming, NFT marketplace and Gaming platform.
+          <Text mb="3" mt="" color="text">
+            bernard.finance is a complete DeFi ecosystem that allows for multiple tokens with proprietary
+            mechanics and a complete swap/staking/NFT marketplace/gaming platform aka bernardswap.
           </Text>
           <Text mb="3" color="text">
-            The ecosystem launched with $BERN, a community token using a reflection tax. This allowed us to set up the next product : $BARREL, which brought a financial aspect to the project.
+            Our tokens $BERN, $BARREL and $BONES are designed to suit various investor profiles and to bring balance to a powerful ecosystem.
           </Text>
           <Text mb="" color="text">
-            We proceeded with a presale launch to raise funds which are now in an unleveraged algorithmic trading account. The benefits of the algorithm are both used to compound the account but also proceed to buyback $BERN and $BARREL tokens.
-          </Text>
-          <Text mb="" color="text">
-            The last token is $BONES. It is the fuel of the BernardSwap DEX. it will allow to reward holders of $BERN and $BARREL and is used to interact with the platform (lottery, gaming etc..)
+            Behind the scene works our algo trading account that fuels everything while taking advantage of
+            market weaknesses. Its exceptionnal results shown since mid 2021 are proofs of sustainability and
+            bear-market resistance for our assets. It has always been our first priority, make sure to take care of
+            your capital in all conditions.
           </Text>
 
           <Flex flexDirection="column">
@@ -44,7 +44,7 @@ const Info: React.FC = () => {
                   </Flex>
                 </Wrapper>
                 <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                  <Text fontSize="15px">$BERN is a community meme coin with a reflection tax to grow holders bags. It is bought back by our NFT sells.</Text>
+                  <Text fontSize="15px">$BERN is a community coin with a reflection tax to grow holders bags. It is bought back by our NFT sells.</Text>
                 </Wrapper>
                 <Wrapper mb="12px" style={{minHeight: '20px'}}>
                   <Text fontSize="15px">10% tax on transactions.</Text>
@@ -114,6 +114,13 @@ const Info: React.FC = () => {
               </CardBodyToken>
             </FlexToken>
           </Flex>
+          <Text mb="5" color="text">
+            Our NFT gateway system triggers powerstaking, meaning high sustained rewards overtime.
+            We designed the whole system to become self sufficient. Every move from users triggers a buyback
+            somewhere else to maintain a circular economy exploiting DeFi mechanics and algorithms.
+          </Text>
+
+          <img src="/images/test.svg" alt="info" />
 
         </Flex>
       </Page>

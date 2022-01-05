@@ -87,7 +87,7 @@ const Bets: React.FC = () => {
           <FlexToken>
             <CardBodyToken className="sport">
               <Wrapper mb="12px">
-                <Image src="images/bern.png" alt="logo" width={60} height={60} />
+                <Image src="images/bets_2.png" alt="logo" width={100} height={100} />
                 <Flex flexDirection="column" >
                   <Heading mb="4px" ml="3" style={{fontSize:'33px'}}>Sports</Heading>
                 </Flex>
@@ -100,7 +100,7 @@ const Bets: React.FC = () => {
 
             <CardBodyToken className="others">
               <Wrapper mb="12px">
-                <Image src="images/bern.png" alt="logo" width={60} height={60} />
+              <Image src="images/bets_1.png" alt="logo" width={100} height={100} />
                 <Flex flexDirection="column" >
                   <Heading mb="4px" ml="3" style={{fontSize:'33px'}}>Others</Heading>
                 </Flex>

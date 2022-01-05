@@ -91,6 +91,7 @@ const GlobalStyle = createGlobalStyle`
   bottom: 30px;
   transform: rotate(-225deg);
 }
+
 `
 
 export default GlobalStyle

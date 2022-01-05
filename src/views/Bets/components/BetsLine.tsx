@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Image, Heading, Text, Button, Flex, PrizeIcon, VoteIcon, Won, Input} from '@pancakeswap-libs/uikit'
+import { Image, Heading, Text, Button, Flex, PrizeIcon, VoteIcon, Won, Input, useModal} from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import useTokenBalance from 'hooks/useTokenBalance'
 import { getBalanceNumber } from 'utils/formatBalance'
@@ -7,6 +7,7 @@ import { getCakeAddress } from 'utils/addressHelpers'
 import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
 import ExpandableSectionButton from 'components/ExpandableSectionButton'
+import BetsModal from './BetsModal'
 
 interface Props {
     bets?: any
@@ -25,6 +26,9 @@ const BetsLine: React.FC<Props> = ({ bets, color }) => {
       const [isLoading, setIsLoading] = useState(false)
       const [error, setError] = useState(null)
       const inputId = b.epoch
+      const cakeBalance = useTokenBalance(getCakeAddress())
+      const [onPresentBuy] = useModal(<BetsModal max={cakeBalance} tokenName="$BONES" betId={inputId} betName={b.name}/>)
+
 
 
       const handleChange = (evt: React.ChangeEvent<HTMLInputElement>) => {
@@ -43,53 +47,30 @@ const BetsLine: React.FC<Props> = ({ bets, color }) => {
             <TextCard>{b.home} ({percentHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{b.homeBones} $BONES</span></TextCard>
             <TextCard>DRAW ({percentDraw.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{b.drawBones} $BONES</span> </TextCard>
             <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{b.awayBones} $BONES</span></TextCard>
-            <ExpandableDiv>
-              <ExpandableSectionButton
-                onClick={() => setShowExpandableSection(!showExpandableSection)}
-                expanded={showExpandableSection}
-                color={color}
-              />
-            </ExpandableDiv>
+            {true ?
+              <>
+                <Button onClick={onPresentBuy} variant="primary" >
+                  Bets
+                </Button>
+              </>
+              : null
+            }
+
+            {false ?
+              <Button as="a" href="/farms" variant="primary" >
+                Approve
+              </Button>
+              : null
+            }
+
+            {false ?
+              <Button as="a" href="/farms" variant="primary" >
+                Claim
+              </Button>
+              : null
+            }
 
           </FlexCard>
-          <ExpandingWrapper expanded={showExpandableSection}>
-            <FlexCard >
-              <InputBets
-                id={inputId}
-                name="betsInput"
-                type="number"
-                placeholder="Add $BONES"
-                value={value}
-                onChange={handleChange}
-                isWarning={error}
-                disabled={isLoading}
-                scale="lg"
-              />
-              <WrapperDiv>
-                {true ?
-                  <Button as="a" href="/farms" variant="primary" >
-                    Bets
-                  </Button>
-                  : null
-                }
-
-                {false ?
-                  <Button as="a" href="/farms" variant="primary" >
-                    Approve
-                  </Button>
-                  : null
-                }
-
-                {false ?
-                  <Button as="a" href="/farms" variant="primary" >
-                    Claim
-                  </Button>
-                  : null
-                }
-              </WrapperDiv>
-
-            </FlexCard>
-          </ExpandingWrapper>
         </div>
       )
 

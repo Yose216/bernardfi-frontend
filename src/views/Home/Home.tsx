@@ -40,6 +40,7 @@ const Section = styled.div`
   text-align: center;
   background: #27262cb3;
   padding: 50px 0;
+  min-height: 400px;
   &.middle {
     background: linear-gradient(130deg, #191919 30%, #548d65 100%);
   }
@@ -160,13 +161,13 @@ const Home: React.FC = () => {
         <img src="/images/logo.png" width="200px" height="200px" alt="logo bernard finance"/>
         <Heading as="h1" size="xxl" mb="24px" color="text">
 
-          Bernard Finance
+          BernardSwap
         </Heading>
         <Text mb="" color="textSubtle">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam condimentum vulputate tellus vitae tincidunt. Proin vel condimentum sapien.<br/>
+          Trade it, stake it, play it, earn it <br/>
         </Text>
         <Text mb="" color="textSubtle">
-          Nullam condimentum vulputate tellus vitae tincidunt. Proin vel condimentum sapien.<br/>
+        Exploit web3, NFTs, DeFi and Play to earn games to your advantage to grow your capital effortless.<br/>
         </Text>
 
 
@@ -187,12 +188,12 @@ const Home: React.FC = () => {
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Text color="textSubtle">Try ou superfarms now</Text>
+                  <Text color="textSubtle">Try ou superpools now</Text>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
                   <Button as="a" href="/farms" variant="secondary" style={{border: '2px solid #664EA0', color: '#664EA0'}}>
-                    Try it
+                    Stake!
                   </Button>
                 </div>
               </CardBody>
@@ -208,17 +209,16 @@ const Home: React.FC = () => {
                 </CardHeader>
 
                 <div style={{marginTop: '15px'}}>
-                  <Heading color="text" size="lg">Amount of prize to win</Heading>
                   <Heading size="lg" color="#008611">${lotteryPrizeWithCommaSeparators}</Heading>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Text color="textSubtle">Get your ticket now</Text>
+                  <Text color="textSubtle">Get your tickets now</Text>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
                   <Button as="a" href="/lottery" variant="secondary" style={{border: '2px solid #008611', color: '#008611'}}>
-                    Try it
+                    Play!
                   </Button>
                 </div>
               </CardBody>
@@ -234,8 +234,8 @@ const Home: React.FC = () => {
                 </CardHeader>
 
                 <div style={{marginTop: '15px'}}>
-                  <Heading color="text" size="lg">Your $BONES available</Heading>
-                  <Heading size="lg" color="#ffc00b">{bonesBalance}</Heading>
+                  <Heading color="text" size="lg">Latest bet available</Heading>
+                  <Heading size="lg" color="#ffc00b">X vs Y / 20.01 09:00:00</Heading>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
@@ -244,7 +244,7 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '30px'}}>
                   <Button as="a" href="/bets" variant="secondary" style={{border: '2px solid #ffc00b', color: '#ffc00b'}}>
-                    Try it
+                    Bet!
                   </Button>
                 </div>
               </CardBody>
@@ -255,53 +255,56 @@ const Home: React.FC = () => {
       </Hero>
       <Section>
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Flex flexDirection="column">
+            <img src="/images/nft.png" width="400px" alt="logo bernard finance"/>
+          </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
-            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Discover</span> Our NFT</Heading>
+            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Discover</span> Our NFTs</Heading>
             <Text mt="10px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse a auctor lorem. Nunc porttitor vulputate luctus. Pellentesque fermentum placerat suscipit. Integer egestas nec eros ut elementum. Integer at dignissim est.
+            Explore our marketplace and pick your favorites. Bernard.finance NFTs are keys to superpools staking. Get your hand on the rarest ones to enjoy the highest sustained rewards in DeFi !
             </Text>
             <Button as="a" href="/farms" variant="primary" mt="10px" >
               Buy
             </Button>
           </FlexSecondSection>
-          <Flex flexDirection="column">
-            <img src="/images/bernard.png" width="300px" height="300px" alt="logo bernard finance"/>
-          </Flex>
         </FlexSection>
       </Section>
 
       <Section className="middle">
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Flex flexDirection="column">
-            <img src="/images/bernard.png" width="300px" height="300px" alt="logo bernard finance"/>
-          </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Strong</span> Ecosystem</Heading>
             <Text mt="10px">
-              Bernard Finance provide a powerful synergy for your capital.
+              Discover bernard.finance ecosystem, designed to grow your capital through a powerful synergy.
             </Text>
             <Button as="a" href="/farms" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
-
+          <Flex flexDirection="column">
+            <img src="/images/ecosystem.png" width="300px"  alt="logo bernard finance"/>
+          </Flex>
         </FlexSection>
       </Section>
 
       <Section>
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
+        <Flex flexDirection="column">
+          <img src="/images/bernard.png" width="300px" height="300px" alt="logo bernard finance"/>
+        </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
-            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>SOON</span> Bernardo Fight Club.</Heading>
+
+            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>SOON</span> The Bernardo Fight Club.</Heading>
             <Text mt="10px">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eu accumsan elit, at congue ipsum. Praesent a nibh ligula.
+              Rule N°1 : You do talk about the BFC<br/>
+              Rule N°2 : You DO TALK about the BFC<br/>
+              Rule N°3 : If a fighter says &quot;stop&quot; or goes limp, crush him<br/>
+              Rule N°4 : ...
             </Text>
             <Button as="a" href="/farms" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
-          <Flex flexDirection="column">
-            <img src="/images/bernard.png" width="300px" height="300px" alt="logo bernard finance"/>
-          </Flex>
         </FlexSection>
       </Section>
     </Page>

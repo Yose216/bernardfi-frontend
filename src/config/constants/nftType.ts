@@ -5,7 +5,7 @@ const nftTypes: NftType[] = [
     // Custom NFT
     address: '0x5c2903Fc47F82822C7A7cCA78146847Ef97c57D0',
     id: '1',
-    level: 'classic'
+    level: 'super'
   },
   {
     address: '0x116fe700220882578d2b09c8f31dfc8abd72905e',
