@@ -268,45 +268,44 @@ const Home: React.FC = () => {
       </Hero>
       <Section>
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
-          <Flex flexDirection="column">
-            <img src="/images/nft.png" width="400px" alt="logo bernard finance"/>
-          </Flex>
+
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Discover</span> Our NFTs</Heading>
             <Text mt="10px">
             Explore our marketplace and pick your favorites. Bernard.finance NFTs are keys to superpools staking. Get your hand on the rarest ones to enjoy the highest sustained rewards in DeFi !
             </Text>
-            <Button as="a" href="/farms" variant="primary" mt="10px" >
+            <Button as="a" href="https://www.featured.market/profile/bernard_finance" target="blank" variant="primary" mt="10px" >
               Buy
             </Button>
           </FlexSecondSection>
+          <Flex flexDirection="column">
+            <img src="/images/nft.png" width="400px" alt="logo bernard finance"/>
+          </Flex>
         </FlexSection>
       </Section>
 
       <Section className="middle">
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
+          <Flex flexDirection="column">
+            <img src="/images/ecosys.png" width="600px"  alt="logo bernard finance"/>
+          </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Strong</span> Ecosystem</Heading>
             <Text mt="10px">
               Discover bernard.finance ecosystem, designed to grow your capital through a powerful synergy.
             </Text>
-            <Button as="a" href="/farms" variant="primary" mt="10px">
+            <Button as="a" href="/infos" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
-          <Flex flexDirection="column">
-            <img src="/images/ecosystem.png" width="300px"  alt="logo bernard finance"/>
-          </Flex>
+
         </FlexSection>
       </Section>
 
       <Section>
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
-        <Flex flexDirection="column">
-          <img src="/images/bernard.png" width="300px" height="300px" alt="logo bernard finance"/>
-        </Flex>
-          <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
 
+          <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>SOON</span> The Bernardo Fight Club.</Heading>
             <Text mt="10px">
               Rule N°1 : You do talk about the BFC<br/>
@@ -314,10 +313,13 @@ const Home: React.FC = () => {
               Rule N°3 : If a fighter says &quot;stop&quot; or goes limp, crush him<br/>
               Rule N°4 : ...
             </Text>
-            <Button as="a" href="/farms" variant="primary" mt="10px">
+            <Button as="a" href="/bfc" variant="primary" mt="10px">
               Learn
             </Button>
           </FlexSecondSection>
+          <Flex flexDirection="column">
+            <img src="/images/bfc-logo.png" width="300px" height="300px" alt="logo bernard finance"/>
+          </Flex>
         </FlexSection>
       </Section>
     </Page>

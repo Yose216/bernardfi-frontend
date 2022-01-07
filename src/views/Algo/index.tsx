@@ -1,8 +1,52 @@
-import React from 'react'
+import React, { PureComponent } from 'react';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
 import { Image, Heading, Text, Button, Flex} from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
+
+const data = [
+  {
+    name: '1/8',
+    profits: 8484
+  },
+  {
+    name: '14/8',
+    profits: 12587,
+  },
+  {
+    name: '28/8',
+    profits: 18592,
+  },
+  {
+    name: '11/9',
+    profits: 26372,
+  },
+  {
+    name: '25/9',
+    profits: 31565,
+  },
+  {
+    name: '14/10',
+    profits: 33620,
+  },
+  {
+    name: '3/11',
+    profits: 41379,
+  },
+  {
+    name: '15/11',
+    profits: 44438,
+  },
+  {
+    name: '28/11',
+    profits: 49685,
+  },
+  {
+    name: '24/12',
+    profits: 55805,
+  },
+];
 
 const Algo: React.FC = () => {
 
@@ -46,7 +90,41 @@ const Algo: React.FC = () => {
           <Text mb="3" color="text">
             $BARREL trading bot Update of (daydate) :
           </Text>
-          <img src="/images/algo_perf.jpg" alt="algo perf" />
+
+          <div style={{height: "500px", marginTop: "50px"}}>
+            <Heading size="md" color="primary" style={{textAlign:"center", marginBottom: "15px"}}>
+              Trading account profits/buybacks in USD
+            </Heading>
+
+            <ResponsiveContainer width="100%" height="100%">
+              <AreaChart
+                width={500}
+                height={400}
+                data={data}
+                margin={{
+                  top: 10,
+                  right: 30,
+                  left: 0,
+                  bottom: 0,
+                }}
+              >
+              <defs>
+                <linearGradient id="color" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0%" stopColor="#548d65" stopOpacity={1}/>
+                  <stop offset="50%" stopColor="#548d65" stopOpacity={1}/>
+                  <stop offset="100%" stopColor="#548d65" stopOpacity={1}/>
+                </linearGradient>
+              </defs>
+              <CartesianGrid strokeDasharray="3 3" />
+
+              <XAxis dataKey="name"  />
+              <YAxis />
+              <Tooltip />
+              <Area type="monotone" dataKey="profits" stroke="url(#color)" fill="url(#color)" />
+              </AreaChart>
+            </ResponsiveContainer>
+          </div>
+
         </Flex>
       </Page>
     </>

@@ -75,12 +75,8 @@ const config: MenuEntry[] = [
     icon: 'MoreIcon',
     items: [
       {
-        label: 'Github',
-        href: 'https://github.com/bernardfinance/',
-      },
-      {
         label: 'Docs',
-        href: 'https://gitbook.io/',
+        href: 'https://bernard-finance.gitbook.io/bernardswap/',
       },
       {
         label: 'Blog',

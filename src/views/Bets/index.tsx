@@ -126,19 +126,19 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
               </Wrapper>
-              {allowance.toString() === "0" ?
+              { allowance.toString() === "0" && account ?
                 <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
                   Approve
                 </Button>
                 : betsSport.map(b => {
-                  if (b.finished === false) {
+                  if (b.finished === false && account) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
                     return null
                 })
               }
-              {allowance.toString() !== "0" ?
+              {allowance.toString() !== "0" && account  ?
                 <>
                   <ExpandableSectionButton
                     onClick={() => setShowExpandableSection(!showExpandableSection)}
@@ -172,12 +172,12 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
               </Wrapper>
-              {allowance.toString() === "0" ?
+              {allowance.toString() === "0" && account  ?
                 <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
                   Approve
                 </Button>
                 : betsOther.map(b => {
-                  if (b.finished === false) {
+                  if (b.finished === false && account ) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
