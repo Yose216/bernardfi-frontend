@@ -279,7 +279,7 @@ const Home: React.FC = () => {
             </Button>
           </FlexSecondSection>
           <Flex flexDirection="column">
-            <img src="/images/nft.png" width="400px" alt="logo bernard finance"/>
+            <img src="/images/nft.png" width="800px" alt="logo bernard finance"/>
           </Flex>
         </FlexSection>
       </Section>
@@ -287,7 +287,7 @@ const Home: React.FC = () => {
       <Section className="middle">
         <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
           <Flex flexDirection="column">
-            <img src="/images/ecosys.png" width="600px"  alt="logo bernard finance"/>
+            <img src="/images/ecosys.png" width="800px"  alt="logo bernard finance"/>
           </Flex>
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Strong</span> Ecosystem</Heading>
@@ -318,7 +318,7 @@ const Home: React.FC = () => {
             </Button>
           </FlexSecondSection>
           <Flex flexDirection="column">
-            <img src="/images/bfc-logo.png" width="300px" height="300px" alt="logo bernard finance"/>
+            <img src="/images/bfc-logo.png" width="500px" alt="logo bernard finance"/>
           </Flex>
         </FlexSection>
       </Section>

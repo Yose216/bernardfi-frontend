@@ -118,13 +118,14 @@ const Bets: React.FC = () => {
           <FlexToken>
             <CardBodyToken className="sport">
               <Wrapper mb="12px">
-                <Image src="images/bets_2.png" alt="logo" width={100} height={100} />
-                <Flex flexDirection="column" >
-                  <Heading mb="4px" ml="3" style={{fontSize:'33px'}}>Sports</Heading>
-                </Flex>
+                <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Sports</Heading>
+
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                <FlexBern>
+                  <Image src="images/bets_2.png" alt="logo" width={200} height={200} />
+                  <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                </FlexBern>
               </Wrapper>
               { allowance.toString() === "0" && account ?
                 <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
@@ -164,13 +165,14 @@ const Bets: React.FC = () => {
 
             <CardBodyToken className="others">
               <Wrapper mb="12px">
-              <Image src="images/bets_1.png" alt="logo" width={100} height={100} />
-                <Flex flexDirection="column" >
-                  <Heading mb="4px" ml="3" style={{fontSize:'33px'}}>Others</Heading>
-                </Flex>
+                <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Others</Heading>
+
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                <FlexBern>
+                  <Image src="images/bets_1.png" alt="logo" width={200} height={200} />
+                  <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                </FlexBern>
               </Wrapper>
               {allowance.toString() === "0" && account  ?
                 <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
@@ -278,6 +280,18 @@ const FlexData = styled(Flex)`
 flex-direction: row;
 justify-content: space-between;
 align-items: space-between;
+@media screen and (max-width:968px) {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+`
+
+const FlexBern = styled(Flex)`
+flex-direction: row;
+justify-content: center;
+align-items: center;
 @media screen and (max-width:968px) {
   flex-direction: column;
   justify-content: center;

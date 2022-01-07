@@ -120,7 +120,9 @@ const Info: React.FC = () => {
             somewhere else to maintain a circular economy exploiting DeFi mechanics and algorithms.
           </Text>
 
-          <img src="/images/test.svg" alt="info" />
+          <div style={{textAlign: "center"}}>
+            <img width="800px" src="/images/test.svg" alt="info" />
+          </div>
 
         </Flex>
       </Page>
