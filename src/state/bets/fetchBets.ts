@@ -67,19 +67,21 @@ const fetchBets = async (account) => {
         console.log('error')
       }
 
+      if (ledger && ledger.amount.toString()) {
+        b.amountBet = parseFloat(ledger.amount.toString())
+        b.sideBet = ledger.position
+        b.claimed = ledger.claimed
+      }
+
       if (claimable) {
-        if (claimable[0]) {
+        if (claimable[0] && b.amountBet > 0) {
           b.claimable = true;
         } else {
           b.claimable = false;
         }
 
       }
-      if (ledger && ledger.amount.toString()) {
-        b.amountBet = ledger.amount.toString()
-        b.sideBet = ledger.position
-        b.claimed = ledger.claimed
-      }
+
 
       data.push(b);
 

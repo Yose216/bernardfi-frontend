@@ -66,10 +66,10 @@ const Bets: React.FC = () => {
       <Outer>
         <Inner>
           <Heading as="h1" size="xxl" color="#ffc00b" mb="24px">
-            Bets
+            The Bernardo Bets
           </Heading>
           <Heading size="md" color="text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            Spend your $BONES to compete against other players and win the jackpot !
           </Heading>
 
         </Inner>
@@ -123,7 +123,7 @@ const Bets: React.FC = () => {
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <FlexBern>
-                  <Image src="images/bets_2.png" alt="logo" width={200} height={200} />
+                  <img style={{minWidth: '200px'}} src="images/bets_2.png" alt="logo" width={200} height={200} />
                   <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
                 </FlexBern>
               </Wrapper>
@@ -170,7 +170,7 @@ const Bets: React.FC = () => {
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <FlexBern>
-                  <Image src="images/bets_1.png" alt="logo" width={200} height={200} />
+                  <img style={{minWidth: '200px'}} src="images/bets_1.png" alt="logo" width={200} height={200} />
                   <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
                 </FlexBern>
               </Wrapper>

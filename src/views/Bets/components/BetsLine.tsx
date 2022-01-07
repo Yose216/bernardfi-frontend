@@ -70,14 +70,14 @@ const BetsLine: React.FC<Props> = ({ b }) => {
         <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.awayBones)} $BONES</span></TextCard>
         {!b.finished && !b.amountBet ?
           <>
-            <Button onClick={onPresentBuy} variant="primary" >
+            <ButtonCard onClick={onPresentBuy} variant="primary" >
               Bets
-            </Button>
+            </ButtonCard>
           </>
           : null
         }
 
-        {!b.finished && b.amountBet ?
+        {!b.finished && b.amountBet > 0 ?
           <>
             <TextCard style={{color: "#5DCE80"}}>You bet {getBalanceNumber(b.amountBet)} $BONES on {betSide}<br/></TextCard>
           </>
@@ -85,24 +85,29 @@ const BetsLine: React.FC<Props> = ({ b }) => {
         }
 
         {b.claimable && !b.claimed && (
-          <Button  variant="primary" disabled={pendingTx}
+          <ButtonCard  variant="primary" disabled={pendingTx}
           onClick={async () => {
             setPendingTx(true)
             await handleClaim()
             setPendingTx(false)
           }}>
             Claim
-          </Button>
+          </ButtonCard>
           )
         }
 
         {b.claimable && b.claimed && (
-          <TextCard style={{color: "orange"}}>You are already get your prize</TextCard>
+          <TextCard style={{color: "orange"}}>Already claimed</TextCard>
           )
         }
 
-        {!b.claimable && b.finished && (
-          <TextCard style={{color: "red"}}>You lost</TextCard>
+        {!b.claimable && b.finished && b.amountBet > 0 && (
+          <TextCard style={{color: "red"}}>You lost :(</TextCard>
+          )
+        }
+
+        {!b.claimable && b.finished && !b.amountBet && (
+          <TextCard style={{color: "red"}}>you did not bet :(</TextCard>
           )
         }
 
@@ -148,6 +153,15 @@ const InputBets = styled(Input)`
 
 `
 const TextCard = styled(Text)`
+  width: 20%;
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    padding-bottom: 20px;
+  }
+
+`
+
+const ButtonCard = styled(Button)`
   width: 20%;
   @media screen and (max-width: 768px) {
     width: 100%;

@@ -73,7 +73,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         onChange={handleChange}
         max={fullBalance}
         symbol="TICKET"
-        availableSymbol="CAKE"
+        availableSymbol="BONES"
       />
       <div>
         <Tips>Your amount must be a multiple of 10 $BONES</Tips>

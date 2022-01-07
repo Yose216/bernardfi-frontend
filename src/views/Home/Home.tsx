@@ -86,6 +86,15 @@ const FlexSection = styled(Flex)`
 
 `
 
+const FlexNftSection = styled(Flex)`
+  width: 80%;
+  @media screen and (max-width: 768px) {
+    flex-direction: column;
+    width: 100%;
+  }
+
+`
+
 const FlexSecondSection = styled(Flex)`
   width: 60%;
   @media screen and (max-width: 768px) {
@@ -170,12 +179,12 @@ const Home: React.FC = () => {
         <img src="/images/logo.png" width="200px" height="200px" alt="logo bernard finance"/>
         <Heading as="h1" size="xxl" mb="24px" color="text">
 
-          BernardSwap
+          BERNARDSWAP
         </Heading>
-        <Text mb="" color="textSubtle">
+        <Text fontSize="24px" mb="" color="textSubtle">
           Trade it, stake it, play it, earn it <br/>
         </Text>
-        <Text mb="" color="textSubtle">
+        <Text fontSize="24px" mb="" color="textSubtle">
         Exploit web3, NFTs, DeFi and Play to earn games to your advantage to grow your capital effortless.<br/>
         </Text>
 
@@ -245,7 +254,7 @@ const Home: React.FC = () => {
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Latest bet available</Heading>
                   {lastBet ?
-                    <Heading size="lg" color="#ffc00b">{lastBet.name} <br/>{formatDate(lastBet.startDate)}</Heading>
+                    <Heading size="lg" color="#ffc00b">{lastBet.name} </Heading>
                     :
                     <Heading size="lg" color="#ffc00b">-</Heading>
                   }
@@ -267,7 +276,7 @@ const Home: React.FC = () => {
 
       </Hero>
       <Section>
-        <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
+        <FlexNftSection flexDirection="row" justifyContent="space-between" alignItems="center">
 
           <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
             <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Discover</span> Our NFTs</Heading>
@@ -281,7 +290,7 @@ const Home: React.FC = () => {
           <Flex flexDirection="column">
             <img src="/images/nft.png" width="800px" alt="logo bernard finance"/>
           </Flex>
-        </FlexSection>
+        </FlexNftSection>
       </Section>
 
       <Section className="middle">
