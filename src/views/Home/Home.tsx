@@ -179,7 +179,7 @@ const Home: React.FC = () => {
         <img src="/images/logo.png" width="200px" height="200px" alt="logo bernard finance"/>
         <Heading as="h1" size="xxl" mb="24px" color="text">
 
-          BERNARDSWAP
+          bernardswap
         </Heading>
         <Text fontSize="24px" mb="" color="textSubtle">
           Trade it, stake it, play it, earn it <br/>
@@ -227,6 +227,8 @@ const Home: React.FC = () => {
                 </CardHeader>
 
                 <div style={{marginTop: '15px'}}>
+                <Heading color="text" size="lg">Live prizepool</Heading>
+
                   <Heading size="lg" color="#008611">${lotteryPrizeWithCommaSeparators}</Heading>
                 </div>
 
