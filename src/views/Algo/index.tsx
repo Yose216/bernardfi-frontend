@@ -133,10 +133,14 @@ const Algo: React.FC = () => {
 
 
 const Outer = styled.div`
-  background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
+background-image: url('/images/bernardswap.png');
+background-position: center;
+background-size: contain;
 `
 
 const Inner = styled(Container)`
+background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
+
   padding-top: 32px;
   padding-bottom: 32px;
   padding-left: 10%;

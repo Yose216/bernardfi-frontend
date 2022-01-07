@@ -171,14 +171,19 @@ console.log(farmsLP)
 }
 
 const Outer = styled.div`
-  background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
   margin-bottom: 50px;
+  background-image: url('/images/bernardswap.png');
+  background-position: center;
+  background-size: contain;
+
 `
 
 const Inner = styled(Container)`
   padding-top: 80px;
   padding-bottom: 32px;
   height: 250px;
+  background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
+
   & h1 {
     @media screen and (max-width: 768px) {
       font-size: 30px!important;

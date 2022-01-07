@@ -81,10 +81,7 @@ const Hero = () => {
 
   return (
     <StyledHero>
-    <Wrapper>
-      <img width="300px" src="/images/lottery_bernardo_swap.png" alt="ticket" />
 
-    </Wrapper>
       <StyledContainer>
         <LeftWrapper>
           <Title>The Bernardo Lottery</Title>
@@ -95,6 +92,10 @@ const Hero = () => {
           <LotteryProgress />
         </RightWrapper>
       </StyledContainer>
+      <Wrapper>
+        <img width="300px" src="/images/lottery_bernardo_swap.png" alt="ticket" />
+
+      </Wrapper>
     </StyledHero>
   )
 }

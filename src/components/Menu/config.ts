@@ -53,7 +53,7 @@ const config: MenuEntry[] = [
     ],
   },
   {
-    label: 'Marketplace NFTs',
+    label: 'NFT Marketplace',
     icon: 'NftIcon',
     href: '/marketplace-nft',
   },

@@ -10,7 +10,7 @@ const Marketplace: React.FC = () => {
       <Outer>
         <Inner>
           <Heading as="h1" size="xxl" color="primary" mb="24px">
-            Marketplace NFTs (coming soon)
+            NFT Marketplace (coming soon)
           </Heading>
           <Heading size="lg" color="text">
             Lorem ipsum it dolor.
