@@ -5,7 +5,7 @@ import { Heading, Text, BaseLayout, Flex, Button, Card, CardBody, CardHeader, Fa
 import useI18n from 'hooks/useI18n'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { useFarms, usePriceBnbBusd, usePriceCakeBusd } from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePriceCakeBusd, useBets } from 'state/hooks'
 import { useTotalRewards } from 'hooks/useTickets'
 import Page from 'components/layout/Page'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
@@ -95,7 +95,7 @@ const FlexSecondSection = styled(Flex)`
 `
 
 const CardHero = styled(Card)`
-  min-height: 300px;
+  min-height: 350px;
   background: #27262c;
   border-radius: 15px;
   width: 30%;
@@ -109,6 +109,9 @@ const CardHero = styled(Card)`
 const Home: React.FC = () => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
+  const bets = useBets()
+  const lastBet = bets.slice(-1)[0]
+
   const cakePrice = usePriceCakeBusd()
   const bnbPrice = usePriceBnbBusd()
   const bonesBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
@@ -154,6 +157,12 @@ const Home: React.FC = () => {
   const superApyFormated = superApy.toLocaleString(undefined, {
       maximumFractionDigits: 0,
     })
+
+    const formatDate = (dateString) => {
+      const ts = new Date(dateString * 1000)
+      return new Intl.DateTimeFormat(undefined, {year: 'numeric', month: '2-digit',day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit'}).format(ts)
+    }
+
 
   return (
     <Page>
@@ -235,7 +244,11 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Latest bet available</Heading>
-                  <Heading size="lg" color="#ffc00b">X vs Y / 20.01 09:00:00</Heading>
+                  {lastBet ?
+                    <Heading size="lg" color="#ffc00b">{lastBet.name} <br/>{formatDate(lastBet.startDate)}</Heading>
+                    :
+                    <Heading size="lg" color="#ffc00b">-</Heading>
+                  }
                 </div>
 
                 <div style={{marginTop: '30px'}}>

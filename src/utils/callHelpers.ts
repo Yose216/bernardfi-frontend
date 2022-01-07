@@ -7,6 +7,24 @@ export const approve = async (lpContract, masterChefContract, account) => {
     .send({ from: account })
 }
 
+export const bet = async (contract, id, amount, side, account) => {
+  return contract.methods
+    .bet(id, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), side)
+    .send({ from: account })
+    .on('transactionHash', (tx) => {
+      return tx.transactionHash
+    })
+}
+
+export const claim = async (contract, id, account) => {
+  return contract.methods
+    .claim(id)
+    .send({ from: account })
+    .on('transactionHash', (tx) => {
+      return tx.transactionHash
+    })
+}
+
 export const stake = async (masterChefContract, pid, amount, account) => {
   return masterChefContract.methods
     .deposit(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())

@@ -8,6 +8,8 @@ export interface ExpandableSectionButtonProps {
   onClick?: () => void,
   expanded?: boolean
   color?: string
+  hideText?: string
+  showText?: string
 }
 
 const Wrapper = styled.div`
@@ -18,11 +20,11 @@ const Wrapper = styled.div`
 
 `
 
-const ExpandableSectionButton: React.FC<ExpandableSectionButtonProps> = ({ onClick, expanded, color }) => {
+const ExpandableSectionButton: React.FC<ExpandableSectionButtonProps> = ({ onClick, expanded, color, hideText, showText }) => {
   return (
     <Wrapper aria-label="Hide or show expandable content" role="button" onClick={() => onClick()}>
       <Text color={color} bold>
-        {expanded ? 'Hide' : 'Details'}
+        {expanded ? hideText : showText}
       </Text>
       {expanded ? <ChevronUpIcon color={color} /> : <ChevronDownIcon color={color} />}
     </Wrapper>
@@ -32,6 +34,8 @@ const ExpandableSectionButton: React.FC<ExpandableSectionButtonProps> = ({ onCli
 ExpandableSectionButton.defaultProps = {
   expanded: false,
   color: "primary",
+  hideText: "Hide",
+  showText: "Details",
 }
 
 export default ExpandableSectionButton

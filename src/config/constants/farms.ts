@@ -19,6 +19,7 @@ const farms: FarmConfig[] = [
     quoteTokenAdresses: contracts.wbnb,
     level: 'super'
   },
+  
   // {
   //   pid: 0,
   //   risk: 5,

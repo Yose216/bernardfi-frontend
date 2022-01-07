@@ -38,7 +38,7 @@ const App: React.FC = () => {
     }
   }, [account, connect])
 
-  useFetchPublicData()
+  useFetchPublicData(account)
 
   return (
     <Router>

@@ -2,19 +2,20 @@ import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
-import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync } from './actions'
-import { State, Farm, Pool } from './types'
+import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync, fetchBetsPublicDataAsync } from './actions'
+import { State, Farm, Pool, Bets } from './types'
 import { QuoteToken } from '../config/constants/types'
 
 const ZERO = new BigNumber(0)
 
-export const useFetchPublicData = () => {
+export const useFetchPublicData = (account) => {
   const dispatch = useDispatch()
   const { slowRefresh } = useRefresh()
   useEffect(() => {
     dispatch(fetchFarmsPublicDataAsync())
+    dispatch(fetchBetsPublicDataAsync(account))
     // dispatch(fetchPoolsPublicDataAsync())
-  }, [dispatch, slowRefresh])
+  }, [dispatch, slowRefresh, account])
 }
 
 // Farms
@@ -22,6 +23,11 @@ export const useFetchPublicData = () => {
 export const useFarms = (): Farm[] => {
   const farms = useSelector((state: State) => state.farms.data)
   return farms
+}
+
+export const useBets = (): Bets[] => {
+  const bets = useSelector((state: State) => state.bets.data)
+  return bets
 }
 
 export const useFarmFromPid = (pid): Farm => {

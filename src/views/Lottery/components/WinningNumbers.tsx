@@ -174,7 +174,11 @@ const StyledCardHeader = styled.div`
   flex-direction: column;
 `
 
-const CardWrapper = styled.div``
+const CardWrapper = styled.div`
+  background-image: url('/images/lottery_balls.png');
+  background-position: center;
+  background-size: contain;
+`
 
 const Title = styled.div`
   color: ${(props) => props.theme.colors.primary};

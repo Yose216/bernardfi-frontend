@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Heading, CardBody, CardFooter, PancakeRoundIcon, TicketRound } from '@pancakeswap-libs/uikit'
+import { Heading, CardBody, CardFooter, PancakeRoundIcon, BonesRoundIcon } from '@pancakeswap-libs/uikit'
 import useI18n from 'hooks/useI18n'
 import { DataResponse } from 'utils/getLotteryRoundData'
 import LotteryCardHeading from '../LotteryCardHeading'
@@ -49,13 +49,13 @@ const PastRoundCardDetails: React.FC<PastRoundCardDetailsProps> = ({ data }) => 
             </Heading>
             <TopLotteryCardHeading
               valueToDisplay={`${lotteryNumbers[0]}, ${lotteryNumbers[1]}, ${lotteryNumbers[2]}, ${lotteryNumbers[3]}`}
-              Icon={TicketRound}
             >
               {TranslateString(999, 'Winning numbers')}
+
             </TopLotteryCardHeading>
             <LotteryCardHeading
               valueToDisplay={`${poolSize.toLocaleString()} $BONES`}
-              Icon={PancakeRoundIcon}
+              Icon={BonesRoundIcon}
             >
               {TranslateString(999, 'Total prizes')}
             </LotteryCardHeading>

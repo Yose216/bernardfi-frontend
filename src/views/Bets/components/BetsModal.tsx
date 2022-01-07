@@ -1,6 +1,7 @@
 import BigNumber from 'bignumber.js'
 import React, { useCallback, useMemo, useState } from 'react'
 import { Button, Modal } from '@pancakeswap-libs/uikit'
+import { useBuyBet } from 'hooks/useBetBets'
 import styled from 'styled-components'
 import ModalActions from 'components/ModalActions'
 import TokenInput from 'components/TokenInput'
@@ -11,13 +12,15 @@ interface BetsModalProps {
   max: BigNumber
   betId: number
   betName: string
+  home: string
+  away: string
   onDismiss?: () => void
   tokenName?: string
 }
 
-const BetsModal: React.FC<BetsModalProps> = ({ max, betId, betName, onDismiss, tokenName = ''}) => {
+const BetsModal: React.FC<BetsModalProps> = ({ max, betId, betName, home, away, onDismiss, tokenName = ''}) => {
   const [val, setVal] = useState('')
-  const [side, setSide] = useState("1")
+  const [side, setSide] = useState("home")
   const [pendingTx, setPendingTx] = useState(false)
   const TranslateString = useI18n()
   const fullBalance = useMemo(() => {
@@ -26,8 +29,7 @@ const BetsModal: React.FC<BetsModalProps> = ({ max, betId, betName, onDismiss, t
 
   const handleChange = useCallback(
     (e: React.FormEvent<HTMLInputElement>) => {
-      console.log(e.currentTarget.value)
-      setVal("1")
+      setVal(e.currentTarget.value)
     },
     [setVal],
   )
@@ -43,30 +45,40 @@ const BetsModal: React.FC<BetsModalProps> = ({ max, betId, betName, onDismiss, t
     setVal(fullBalance)
   }, [fullBalance, setVal])
 
+  const { onBuy } = useBuyBet()
+
   const handleBets = useCallback(async () => {
     try {
-      console.log(val)
-      console.log(betId)
+      let sideNum = 0;
+      if (side === "home") {
+        sideNum = 0
+      } else if (side === "away") {
+        sideNum = 2
+      } else {
+        sideNum = 1
+      }
+
+      await onBuy(betId, val, sideNum);
     } catch (e) {
       console.error(e)
     }
-  }, [val, betId])
+  }, [val, betId, side, onBuy])
 
   return (
     <Modal title={betName} onDismiss={onDismiss}>
       <DivSelect value={side} onChange={handleChangeSide}>
-        <option value={1}>Home</option>
-        <option value={2}>Draw</option>
-        <option value={3}>Away</option>
+        <option value="home">{home}</option>
+        <option value="draw">Draw</option>
+        <option value="away">{away}</option>
       </DivSelect>
 
-      <TokenInput
-        value={val}
-        onSelectMax={handleSelectMax}
-        onChange={handleChange}
-        max={fullBalance}
-        symbol={tokenName}
-      />
+        <TokenInput
+          value={val}
+          onSelectMax={handleSelectMax}
+          onChange={handleChange}
+          max={fullBalance}
+          symbol={tokenName}
+        />
       <ModalActions>
         <Button variant="secondary" onClick={onDismiss}>
           {TranslateString(462, 'Cancel')}

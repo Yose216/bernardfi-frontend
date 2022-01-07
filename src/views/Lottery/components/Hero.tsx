@@ -23,6 +23,7 @@ const StyledHero = styled.div`
   justify-content: center;
   align-items: center;
   display: flex;
+  flex-direction: column;
 
 `
 
@@ -68,11 +69,22 @@ const RightWrapper = styled.div`
   }
 `
 
+const Wrapper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+
 const Hero = () => {
   const TranslateString = useI18n()
 
   return (
     <StyledHero>
+    <Wrapper>
+      <img width="300px" src="/images/lottery_bernardo_swap.png" alt="ticket" />
+
+    </Wrapper>
       <StyledContainer>
         <LeftWrapper>
           <Title>Bernard Finance Lottery</Title>

@@ -1,35 +1,66 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 import { Image, Heading, Text, Button, Flex, PrizeIcon, VoteIcon, Won} from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import useTokenBalance from 'hooks/useTokenBalance'
+import { useBets } from 'state/hooks'
+import { useBetsApprove } from 'hooks/useApprove'
+import { useWallet } from '@binance-chain/bsc-use-wallet'
+import { useBetsAllowance } from 'hooks/useAllowance'
+import { useDispatch } from 'react-redux'
+import useRefresh from 'hooks/useRefresh'
+import { fetchBetsPublicDataAsync } from 'state/actions'
 import { getBalanceNumber } from 'utils/formatBalance'
-import { getCakeAddress } from 'utils/addressHelpers'
+import { getCakeAddress, getBetsAddress } from 'utils/addressHelpers'
 import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
 import ExpandableSectionButton from 'components/ExpandableSectionButton'
 import BetsLine from './components/BetsLine'
 
-
 const Bets: React.FC = () => {
+  const bets = useBets()
+  const { account } = useWallet()
   const bonesBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
   const [showExpandableSection, setShowExpandableSection] = useState(false)
-  const bets = {
-    "sports":
-      [
-        {"epoch": "1","name": "PSG-OM", "date": "1641550788", "home": "PSG", "away": "OM", "homeBones": "150", "drawBones": "45", "awayBones": "15"},
-        {"epoch": "2","name": "FC Barcelone-Real Madrid FC", "date": "1641550788", "home": "FC Barcelone", "away": "Real Madrid FC", "homeBones": "100", "drawBones": "150", "awayBones": "100"},
-        {"epoch": "3","name": "Stade Rennais-FC Nantes", "date": "1641550788", "home": "Stade Rennais", "away": "FC Nantes", "homeBones": "1", "drawBones": "50", "awayBones": "15"},
-      ],
+  const [showExpandableSectionOther, setShowExpandableSectionOther] = useState(false)
 
-    "others":
-      [
-        {"epoch": "4","name": "XXX-XXXX", "date": "1641550788", "home": "XXX", "away": "XXXX", "homeBones": "150", "drawBones": "45", "awayBones": "15"},
-        {"epoch": "5","name": "XXX-XXXX", "date": "1641550788", "home": "XXX", "away": "XXXX", "homeBones": "30", "drawBones": "100", "awayBones": "30"},
-        {"epoch": "6","name": "XXX-XXXX", "date": "1641550788", "home": "XXX", "away": "XXXX", "homeBones": "15", "drawBones": "75", "awayBones": "80"},
-      ],
+  const dispatch = useDispatch()
+  const { fastRefresh } = useRefresh()
+  useEffect(() => {
+    dispatch(fetchBetsPublicDataAsync(account))
+  }, [ dispatch, fastRefresh, account])
+  const [requestedApproval, setRequestedApproval] = useState(false)
+  const allowance = useBetsAllowance(account)
+  const { onApprove } = useBetsApprove(account)
+  const betsSport = [];
+  const betsOther = [];
+
+  let betsWin = 0;
+  if (bets) {
+    bets.map((b) => {
+        if (b.type === 'sport') {
+          betsSport.push(b);
+        } else {
+          betsOther.push(b);
+        }
+
+        if (b.claimable === true) {
+          betsWin += 1
+        }
+      return 0;
+    })
   }
 
-  console.log(bets);
+  const handleApprove = useCallback(async () => {
+    try {
+      setRequestedApproval(true)
+      await onApprove()
+      setRequestedApproval(false)
+
+    } catch (e) {
+      console.error(e)
+    }
+  }, [onApprove])
+
   return (
     <>
       <Outer>
@@ -66,7 +97,7 @@ const Bets: React.FC = () => {
                 </Flex>
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                <Heading mb="4px" ml="3" color="secondary" style={{fontSize:'50px'}}>$120,000</Heading>
+                <Heading mb="4px" ml="3" color="secondary" style={{fontSize:'50px'}}>-</Heading>
               </Wrapper>
             </CardBodyData>
             <CardBodyData >
@@ -77,7 +108,7 @@ const Bets: React.FC = () => {
                 </Flex>
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                <Heading mb="4px" ml="3" color="#ffc00b" style={{fontSize:'50px'}}>13</Heading>
+                <Heading mb="4px" ml="3" color="#ffc00b" style={{fontSize:'50px'}}>{betsWin}</Heading>
               </Wrapper>
 
 
@@ -95,7 +126,40 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
               </Wrapper>
-              <BetsLine bets={bets.sports} color="#ffc00b"/>
+              {allowance.toString() === "0" ?
+                <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
+                  Approve
+                </Button>
+                : betsSport.map(b => {
+                  if (b.finished === false) {
+                    return(<BetsLine b={b} key={b.id}/>)
+                  }
+
+                    return null
+                })
+              }
+              {allowance.toString() !== "0" ?
+                <>
+                  <ExpandableSectionButton
+                    onClick={() => setShowExpandableSection(!showExpandableSection)}
+                    expanded={showExpandableSection}
+                    showText="Old Bets"
+                  />
+                  <ExpandingWrapper expanded={showExpandableSection}>
+                  {betsSport.map(b => {
+                    if (b.finished === true) {
+                      return(<BetsLine b={b} key={b.id}/>)
+                    }
+
+                    return null
+
+                  })}
+                  </ExpandingWrapper>
+                </>
+              : null
+              }
+
+
             </CardBodyToken>
 
             <CardBodyToken className="others">
@@ -108,7 +172,38 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
               </Wrapper>
-              <BetsLine bets={bets.others} color="#5b00a3"/>
+              {allowance.toString() === "0" ?
+                <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
+                  Approve
+                </Button>
+                : betsOther.map(b => {
+                  if (b.finished === false) {
+                    return(<BetsLine b={b} key={b.id}/>)
+                  }
+
+                    return null
+                })
+              }
+              {allowance.toString() !== "0" ?
+                <>
+                  <ExpandableSectionButton
+                    onClick={() => setShowExpandableSectionOther(!showExpandableSectionOther)}
+                    expanded={showExpandableSectionOther}
+                    showText="Old Bets"
+                  />
+                  <ExpandingWrapper expanded={showExpandableSectionOther}>
+                  {betsOther.map(b => {
+                    if (b.finished === true) {
+                      return(<BetsLine b={b} key={b.id}/>)
+                    }
+
+                    return null
+
+                  })}
+                  </ExpandingWrapper>
+                </>
+              : null
+              }
             </CardBodyToken>
 
           </FlexToken>
@@ -120,7 +215,7 @@ const Bets: React.FC = () => {
 
 
 const Outer = styled.div`
-  background: linear-gradient(130deg, #5b00a3 0%, #22201f 50%, #ffc00b 100%);
+  background: linear-gradient(130deg, #5b00a3 0%, #22201f 50%, #bb8b00 100%);
 `
 
 const Inner = styled(Container)`
@@ -153,7 +248,7 @@ const CardBodyToken = styled.div`
     background: linear-gradient(180deg, #27262cb3 15%, #5b00a3 100%);
   },
   &.other {
-    background: linear-gradient(180deg, #27262cb3 15%, #ffc00b 100%);
+    background: linear-gradient(180deg, #27262cb3 15%, #bb8b00 100%);
   },
   align-self: baseline;
   border-radius: 32px;

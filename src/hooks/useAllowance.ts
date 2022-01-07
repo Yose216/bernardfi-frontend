@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { Contract } from 'web3-eth-contract'
-import { useCake, useLottery } from './useContract'
+import { useCake, useLottery, useBets } from './useContract'
 import { getAllowance } from '../utils/erc20'
 
 // Retrieve lottery allowance
@@ -24,6 +24,27 @@ export const useLotteryAllowance = () => {
     const refreshInterval = setInterval(fetchAllowance, 10000)
     return () => clearInterval(refreshInterval)
   }, [account, cakeContract, lotteryContract])
+
+  return allowance
+}
+
+export const useBetsAllowance = (account) => {
+  const [allowance, setAllowance] = useState(new BigNumber(0))
+  const betsContract = useBets()
+  const cakeContract = useCake()
+
+  useEffect(() => {
+    const fetchAllowance = async () => {
+      const res = await getAllowance(cakeContract, betsContract, account)
+      setAllowance(new BigNumber(res))
+    }
+
+    if (account && betsContract && cakeContract) {
+      fetchAllowance()
+    }
+    const refreshInterval = setInterval(fetchAllowance, 10000)
+    return () => clearInterval(refreshInterval)
+  }, [account, cakeContract, betsContract])
 
   return allowance
 }

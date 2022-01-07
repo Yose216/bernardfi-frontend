@@ -76,6 +76,10 @@ export interface PoolConfig {
   tokenDecimals: number
 }
 
+export interface BetsConfig {
+  id: number 
+}
+
 export type Nft = {
   name: string
   description: string
