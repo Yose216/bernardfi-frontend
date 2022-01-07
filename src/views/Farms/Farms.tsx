@@ -42,7 +42,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   }, [account, dispatch, fastRefresh])
 
   const [stakedOnly, setStakedOnly] = useState(false)
-
+console.log(farmsLP)
   const activeFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X')
   const inactiveFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X')
 

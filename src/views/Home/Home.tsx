@@ -81,7 +81,7 @@ const FlexSection = styled(Flex)`
   width: 60%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    width: 100%;
+    width: 90%;
   }
 
 `
@@ -90,7 +90,7 @@ const FlexNftSection = styled(Flex)`
   width: 80%;
   @media screen and (max-width: 768px) {
     flex-direction: column;
-    width: 100%;
+    width: 90%;
   }
 
 `
@@ -114,6 +114,36 @@ const CardHero = styled(Card)`
   }
 
 `
+
+const Head = styled(Heading)`
+  @media screen and (max-width: 768px) {
+    font-size: 45px;
+  }
+
+`
+
+const SubHead = styled(Text)`
+  font-size: 24px;
+
+  @media screen and (max-width: 768px) {
+    font-size: 16px;
+  }
+
+`
+
+const DataCard = styled(Heading)`
+  white-space: nowrap;
+  overflow: hidden !important;
+  text-overflow: ellipsis;
+
+  @media screen and (max-width: 768px) {
+    width: 250px;
+
+  }
+
+`
+
+
 
 const Home: React.FC = () => {
   const TranslateString = useI18n()
@@ -177,17 +207,15 @@ const Home: React.FC = () => {
     <Page>
       <Hero>
         <img src="/images/logo.png" width="200px" height="200px" alt="logo bernard finance"/>
-        <Heading as="h1" size="xxl" mb="24px" color="text">
-
+        <Head as="h1" size="xxl" mb="24px" color="text">
           bernardswap
-        </Heading>
-        <Text fontSize="24px" mb="" color="textSubtle">
+        </Head>
+        <SubHead mb="" color="textSubtle">
           Trade it, stake it, play it, earn it <br/>
-        </Text>
-        <Text fontSize="24px" mb="" color="textSubtle">
-        Exploit web3, NFTs, DeFi and Play to earn games to your advantage to grow your capital effortless.<br/>
-        </Text>
-
+        </SubHead>
+        <SubHead mb="" color="textSubtle">
+          Exploit web3, NFTs, DeFi and Play to earn games to your advantage to grow your capital effortless.<br/>
+        </SubHead>
 
         <Flex flexDirection="column" style={{width: '80%', margin: '50px 0'}}>
           <FlexCard flexDirection="row" justifyContent="space-between" alignItems="space-between">
@@ -202,7 +230,7 @@ const Home: React.FC = () => {
 
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Earn up to</Heading>
-                  <Heading size="lg" color="secondary">{superApyFormated}%</Heading>
+                  <DataCard size="lg" color="secondary">{superApyFormated}%</DataCard>
                 </div>
 
                 <div style={{marginTop: '30px'}}>
@@ -256,7 +284,7 @@ const Home: React.FC = () => {
                 <div style={{marginTop: '15px'}}>
                   <Heading color="text" size="lg">Latest bet available</Heading>
                   {lastBet ?
-                    <Heading size="lg" color="#ffc00b">{lastBet.name} </Heading>
+                    <DataCard size="lg" color="#ffc00b">{lastBet.name} </DataCard>
                     :
                     <Heading size="lg" color="#ffc00b">-</Heading>
                   }
