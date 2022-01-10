@@ -152,10 +152,10 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
 
   return (
     <FCard>
-      {farm.level === 'bronze' && <StyledCardAccentBronze />}
-      {farm.level === 'classic' && <StyledCardAccentClassic />}
-      {farm.level === 'super' && <StyledCardAccentSuper />}
-      {farm.level === 'public' && <StyledCardAccent />}
+      {farm.level === 2 && <StyledCardAccentBronze />}
+      {farm.level === 1 && <StyledCardAccentClassic />}
+      {farm.level === 3 && <StyledCardAccentSuper />}
+      {farm.level === 0 && <StyledCardAccent />}
 
       <CardHeading
         lpLabel={lpLabel}
@@ -197,7 +197,7 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       </Flex>
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
       <Divider />
-      
+
     </FCard>
   )
 }

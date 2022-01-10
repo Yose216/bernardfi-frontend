@@ -2,40 +2,110 @@ import contracts from './contracts'
 import { FarmConfig, QuoteToken } from './types'
 
 const farms: FarmConfig[] = [
+  // {
+  //   pid: 0,
+  //   risk: 5,
+  //   lpSymbol: 'BONES-BNB LP',
+  //   lpAddresses: {
+  //     97: '0xE3d03279aF617e595FdDb9EdDa8D4a0f1Db7DE36',
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BNB,
+  //   quoteTokenAdresses: contracts.wbnb,
+  //   level: 1
+  // },
+  // {
+  //   pid: 1,
+  //   risk: 5,
+  //   lpSymbol: 'BONES-BNB LP',
+  //   lpAddresses: {
+  //     97: '0xaE81EC0046698fc5B114C75Df1734ecE36A58111',
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BNB,
+  //   quoteTokenAdresses: contracts.wbnb,
+  //   level: 2
+  // },
+  // {
+  //   pid: 2,
+  //   risk: 5,
+  //   lpSymbol: 'BONES-BNB LP',
+  //   lpAddresses: {
+  //     97: '0xB0A7525d41D586CD4D0407Eca5042748FC3a01C4',
+  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+  //   },
+  //   tokenSymbol: 'BONES',
+  //   tokenAddresses: {
+  //     97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+  //   },
+  //   quoteTokenSymbol: QuoteToken.BNB,
+  //   quoteTokenAdresses: contracts.wbnb,
+  //   level: 3
+  // },
   {
     pid: 0,
     risk: 5,
-    lpSymbol: 'BONES-BNB LP',
+    isTokenOnly: true,
+    lpSymbol: 'Pool classic',
     lpAddresses: {
-      97: '0x3e60365d098E33c037699F53b733CDE21AfeFa9e',
-      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
+      97: '0xE3d03279aF617e595FdDb9EdDa8D4a0f1Db7DE36',
+      56: '', // BONES-BUSD LP
     },
-    tokenSymbol: 'BONES',
+    tokenSymbol: 'BARREL',
     tokenAddresses: {
       97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+      56: '',
     },
-    quoteTokenSymbol: QuoteToken.BNB,
-    quoteTokenAdresses: contracts.wbnb,
-    level: 'super'
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 1
+  },
+  {
+    pid: 1,
+    risk: 5,
+    isTokenOnly: true,
+    lpSymbol: 'Pool bronze',
+    lpAddresses: {
+      97: '0xaE81EC0046698fc5B114C75Df1734ecE36A58111',
+      56: '', // BONES-BUSD LP
+    },
+    tokenSymbol: 'BERN',
+    tokenAddresses: {
+      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+      56: '',
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 2
   },
   {
     pid: 2,
     risk: 5,
-    lpSymbol: 'BONES-MTK LP',
-    lpAddresses: {
-      97: '0x1Fe3c6C8251D7dFB1590616Bb8F5F0aA65e1Be15',
-      56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
-    },
     isTokenOnly: true,
+    lpSymbol: 'Pool super',
+    lpAddresses: {
+      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+      56: '', // BONES-BUSD LP
+    },
     tokenSymbol: 'BONES',
     tokenAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
-      56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
+      97: '0xB0A7525d41D586CD4D0407Eca5042748FC3a01C4',
+      56: '',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
-    quoteTokenAdresses: contracts.wbnb,
-    level: 'super'
+    quoteTokenAdresses: contracts.busd,
+    level: 3
   },
   // {
   //   pid: 0,

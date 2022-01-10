@@ -3,18 +3,30 @@ import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { useDispatch } from 'react-redux'
 import { fetchFarmUserDataAsync, updateUserBalance, updateUserPendingReward } from 'state/actions'
 import { soushHarvest, soushHarvestBnb, harvest } from 'utils/callHelpers'
+import { useNfts } from 'state/hooks'
 import { useMasterchef, useSousChef } from './useContract'
 
 export const useHarvest = (farmPid: number) => {
   const dispatch = useDispatch()
   const { account } = useWallet()
   const masterChefContract = useMasterchef()
+  const nfts = useNfts()
 
   const handleHarvest = useCallback(async () => {
-    const txHash = await harvest(masterChefContract, farmPid, account)
+    let addressNft = '';
+    let idNft = 0;
+    let level = 0;
+    await nfts.forEach(n => {
+        if (n.owned && n.level > level) {
+            level = n.level
+            idNft = n.id
+            addressNft = n.address
+        }
+    });
+    const txHash = await harvest(masterChefContract, farmPid, account, addressNft, idNft)
     dispatch(fetchFarmUserDataAsync(account))
     return txHash
-  }, [account, dispatch, farmPid, masterChefContract])
+  }, [account, dispatch, farmPid, masterChefContract, nfts])
 
   return { onReward: handleHarvest }
 }

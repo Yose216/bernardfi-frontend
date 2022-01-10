@@ -5,7 +5,7 @@ import { provider } from 'web3-core'
 import { getContract } from 'utils/erc20'
 import { Button, Flex, Text } from '@pancakeswap-libs/uikit'
 import { Farm } from 'state/types'
-import { useFarmFromPid, useFarmFromSymbol, useFarmUser } from 'state/hooks'
+import { useFarmFromPid, useFarmFromSymbol, useFarmUser, useNfts } from 'state/hooks'
 import useI18n from 'hooks/useI18n'
 import { useNft } from 'hooks/useTokenBalance'
 import { nftConfig } from 'config/constants'
@@ -36,18 +36,18 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
   const tokenAddress = tokenAddresses[process.env.REACT_APP_CHAIN_ID];
   const lpName = farm.lpSymbol.toUpperCase()
   const isApproved = account && allowance && allowance.isGreaterThan(0)
+  const nfts = useNfts()
+
   // const res = useNft('0x5c2903Fc47F82822C7A7cCA78146847Ef97c57D0', 1)
 
   let available = false;
-  nftConfig.forEach(n => {
+  nfts.forEach(n => {
       if (farm.level === n.level) {
-          const res = useNft(n.address, parseInt(n.id))
-          if (res && !available) {
+          if (n.owned && !available) {
             available = true;
           }
       }
   });
-  console.log(available)
 
   const lpContract = useMemo(() => {
     if(isTokenOnly){

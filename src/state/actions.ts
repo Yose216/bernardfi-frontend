@@ -8,3 +8,4 @@ export {
   updateUserStakedBalance,
 } from './pools'
 export { fetchBetsPublicDataAsync } from './bets'
+export { fetchNftsPublicDataAsync } from './nfts'

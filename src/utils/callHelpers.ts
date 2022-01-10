@@ -25,9 +25,9 @@ export const claim = async (contract, id, account) => {
     })
 }
 
-export const stake = async (masterChefContract, pid, amount, account) => {
+export const stake = async (masterChefContract, pid, amount, account, addressNft = '0', idNft = 0) => {
   return masterChefContract.methods
-    .deposit(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
+    .deposit(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), addressNft, idNft)
     .send({ from: account })
     .on('transactionHash', (tx) => {
       return tx.transactionHash
@@ -52,9 +52,9 @@ export const sousStakeBnb = async (sousChefContract, amount, account) => {
     })
 }
 
-export const unstake = async (masterChefContract, pid, amount, account) => {
+export const unstake = async (masterChefContract, pid, amount, account, addressNft = '0', idNft = 0) => {
   return masterChefContract.methods
-    .withdraw(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString())
+    .withdraw(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), addressNft, idNft)
     .send({ from: account })
     .on('transactionHash', (tx) => {
       return tx.transactionHash
@@ -96,9 +96,9 @@ export const sousEmegencyUnstake = async (sousChefContract, amount, account) => 
     })
 }
 
-export const harvest = async (masterChefContract, pid, account) => {
+export const harvest = async (masterChefContract, pid, account, addressNft = '0', idNft = 0) => {
   return masterChefContract.methods
-    .deposit(pid, '0')
+    .deposit(pid, '0', addressNft, idNft)
     .send({ from: account })
     .on('transactionHash', (tx) => {
       return tx.transactionHash

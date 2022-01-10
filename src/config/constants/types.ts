@@ -51,7 +51,7 @@ export interface FarmConfig {
   isTokenOnly?: boolean
   isCommunity?: boolean
   risk: number
-  level?: string
+  level: number
   dual?: {
     rewardPerBlock: number
     earnLabel: string
@@ -77,7 +77,11 @@ export interface PoolConfig {
 }
 
 export interface BetsConfig {
-  id: number 
+  id: number
+}
+
+export interface NftsConfig {
+  id: number
 }
 
 export type Nft = {

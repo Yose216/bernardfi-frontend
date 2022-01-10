@@ -8,20 +8,34 @@ import {
   updateUserPendingReward,
 } from 'state/actions'
 import { unstake, sousUnstake, sousEmegencyUnstake } from 'utils/callHelpers'
+import { useNfts } from 'state/hooks'
 import { useMasterchef, useSousChef } from './useContract'
+
 
 const useUnstake = (pid: number) => {
   const dispatch = useDispatch()
   const { account } = useWallet()
   const masterChefContract = useMasterchef()
+  const nfts = useNfts()
+
 
   const handleUnstake = useCallback(
     async (amount: string) => {
-      const txHash = await unstake(masterChefContract, pid, amount, account)
+      let addressNft = '';
+      let idNft = 0;
+      let level = 0;
+      await nfts.forEach(n => {
+          if (n.owned && n.level > level) {
+              level = n.level
+              idNft = n.id
+              addressNft = n.address
+          }
+      });
+      const txHash = await unstake(masterChefContract, pid, amount, account, addressNft, idNft)
       dispatch(fetchFarmUserDataAsync(account))
       console.info(txHash)
     },
-    [account, dispatch, masterChefContract, pid],
+    [account, dispatch, masterChefContract, pid, nfts],
   )
 
   return { onUnstake: handleUnstake }

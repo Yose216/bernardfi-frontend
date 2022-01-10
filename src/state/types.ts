@@ -1,5 +1,5 @@
 import BigNumber from 'bignumber.js'
-import { FarmConfig, PoolConfig, BetsConfig } from 'config/constants/types'
+import { FarmConfig, PoolConfig, BetsConfig, NftsConfig } from 'config/constants/types'
 
 export interface Farm extends FarmConfig {
   tokenAmount?: BigNumber
@@ -45,6 +45,12 @@ export interface Bets extends BetsConfig {
   claimable: boolean
 }
 
+export interface Nfts extends NftsConfig {
+  address: string
+  level: number
+  owned: boolean
+}
+
 // Slices states
 
 export interface FarmsState {
@@ -59,10 +65,15 @@ export interface BetsState {
   data: Bets[]
 }
 
+export interface NftsState {
+  data: Nfts[]
+}
+
 // Global state
 
 export interface State {
   farms: FarmsState
   pools: PoolsState
   bets: BetsState
+  nfts: NftsState
 }
