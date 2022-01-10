@@ -166,13 +166,12 @@ const Home: React.FC = () => {
     })
 
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
-  const activeFarms = farmsLP.filter((farm) => !farm.isTokenOnly && farm.multiplier !== '0X')
+  const activeFarms = farmsLP.filter((farm) => farm.isTokenOnly && farm.multiplier !== '0X')
 
   let superApy = 0;
   const bestApy = activeFarms.map((farm) => {
     const cakeRewardPerBlock = new BigNumber(farm.BONESPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
     const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
-
     let apy = cakePrice.times(cakeRewardPerYear);
     let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 

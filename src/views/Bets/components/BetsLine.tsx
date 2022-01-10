@@ -65,9 +65,9 @@ const BetsLine: React.FC<Props> = ({ b }) => {
     <div key={b.id} style={{borderBottom: '#eeeeee52 1px solid', padding: '20px 0'}}>
       <FlexCard justifyContent='space-between' >
         <TextCard>{b.name} <br/><span style={{fontSize: '13px'}}>({formatDate(b.startDate)})</span></TextCard>
-        <TextCard>{b.home} ({percentHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.homeBones)} $BONES</span></TextCard>
-        <TextCard>DRAW ({percentDraw.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.drawBones)} $BONES</span> </TextCard>
-        <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.awayBones)} $BONES</span></TextCard>
+        <TextCard>{b.home} ({percentHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.homeBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
+        <TextCard>DRAW ({percentDraw.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.drawBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span> </TextCard>
+        <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.awayBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
         {!b.finished && !b.amountBet ?
           <>
             <ButtonCard onClick={onPresentBuy} variant="primary" >
@@ -79,7 +79,7 @@ const BetsLine: React.FC<Props> = ({ b }) => {
 
         {!b.finished && b.amountBet > 0 ?
           <>
-            <TextCard style={{color: "#5DCE80"}}>You bet {getBalanceNumber(b.amountBet)} $BONES on {betSide}<br/></TextCard>
+            <TextCard style={{color: "#5DCE80"}}>You bet {getBalanceNumber(b.amountBet).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES on {betSide}<br/></TextCard>
           </>
           : null
         }

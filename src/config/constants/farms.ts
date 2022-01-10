@@ -59,12 +59,12 @@ const farms: FarmConfig[] = [
     isTokenOnly: true,
     lpSymbol: 'Pool classic',
     lpAddresses: {
-      97: '0xE3d03279aF617e595FdDb9EdDa8D4a0f1Db7DE36',
+      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
       56: '', // BONES-BUSD LP
     },
     tokenSymbol: 'BARREL',
     tokenAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+      97: '0xE3d03279aF617e595FdDb9EdDa8D4a0f1Db7DE36',
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
@@ -77,12 +77,12 @@ const farms: FarmConfig[] = [
     isTokenOnly: true,
     lpSymbol: 'Pool bronze',
     lpAddresses: {
-      97: '0xaE81EC0046698fc5B114C75Df1734ecE36A58111',
+      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
       56: '', // BONES-BUSD LP
     },
     tokenSymbol: 'BERN',
     tokenAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
+      97: '0xaE81EC0046698fc5B114C75Df1734ecE36A58111',
       56: '',
     },
     quoteTokenSymbol: QuoteToken.BUSD,

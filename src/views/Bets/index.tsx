@@ -85,7 +85,7 @@ const Bets: React.FC = () => {
                 </Flex>
               </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
-                <Heading mb="4px" ml="3" color="primary" style={{fontSize:'50px'}}>{bonesBalance}</Heading>
+                <Heading mb="4px" ml="3" color="primary" style={{fontSize:'50px'}}>{bonesBalance.toLocaleString(undefined, {maximumFractionDigits: 2,})}</Heading>
               </Wrapper>
 
             </CardBodyData>
