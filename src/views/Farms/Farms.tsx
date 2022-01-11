@@ -114,7 +114,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
     <Page >
       <Outer>
         <Inner>
-          <Heading as="h1" size="lg" color="primary" mb="25px" style={{ textAlign: 'center' }}>
+          <Heading as="h1" size="xl" color="primary" mb="25px" style={{ textAlign: 'center' }}>
             {
               tokenMode ?
                 'Stake tokens to earn $BONES'

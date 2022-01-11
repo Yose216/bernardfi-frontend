@@ -41,13 +41,18 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
   // const res = useNft('0x5c2903Fc47F82822C7A7cCA78146847Ef97c57D0', 1)
 
   let available = false;
-  nfts.forEach(n => {
-      if (farm.level === n.level) {
-          if (n.owned && !available) {
-            available = true;
-          }
-      }
-  });
+  if (farm.level === 0) {
+    available = true;
+  } else {
+    nfts.forEach(n => {
+        if (farm.level === n.level) {
+            if (n.owned && !available) {
+              available = true;
+            }
+        }
+    });
+  }
+
 
   const lpContract = useMemo(() => {
     if(isTokenOnly){

@@ -25,6 +25,12 @@ export const claim = async (contract, id, account) => {
     })
 }
 
+export const getPriceLp = async (contract, account) => {
+  return contract.methods
+    .getReserves()
+    .call()
+}
+
 export const stake = async (masterChefContract, pid, amount, account, addressNft = '0', idNft = 0) => {
   return masterChefContract.methods
     .deposit(pid, new BigNumber(amount).times(new BigNumber(10).pow(18)).toString(), addressNft, idNft)

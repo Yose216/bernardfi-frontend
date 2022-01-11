@@ -12,11 +12,17 @@ const fetchNfts = async (account) => {
       const calls = [{address: address, name: 'ownerOf', params: [id]}]
 
       let owned = false
-      const [ownerNft] = await multicall(erc721, calls)
-
-      if (ownerNft[0] === account) {
-        owned = true
+      try {
+        const [ownerNft] = await multicall(erc721, calls)
+        if (ownerNft[0] === account) {
+          owned = true
+        }
+      } catch (e) {
+        console.log(address)
+        console.log(id)
+        console.log(e)
       }
+
 
       return {
         id: id,

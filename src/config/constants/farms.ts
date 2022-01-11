@@ -57,15 +57,15 @@ const farms: FarmConfig[] = [
     pid: 0,
     risk: 5,
     isTokenOnly: true,
-    lpSymbol: 'Pool classic',
+    lpSymbol: 'Classic BERN',
     lpAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
-      56: '', // BONES-BUSD LP
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
     },
-    tokenSymbol: 'BARREL',
+    tokenSymbol: 'BERN',
     tokenAddresses: {
-      97: '0xE3d03279aF617e595FdDb9EdDa8D4a0f1Db7DE36',
-      56: '',
+      97: '',
+      56: '0x612b5c1a2d7e94d03dddd53d459d4b944903497d',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
@@ -75,55 +75,110 @@ const farms: FarmConfig[] = [
     pid: 1,
     risk: 5,
     isTokenOnly: true,
-    lpSymbol: 'Pool bronze',
+    lpSymbol: 'Classic BARREL',
     lpAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
-      56: '', // BONES-BUSD LP
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+    },
+    tokenSymbol: 'BARREL',
+    tokenAddresses: {
+      97: '',
+      56: '0xDB1B7a685e6876d508DE3c5160764B56577a83ae',
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 1
+  },
+  {
+    pid: 2,
+    risk: 5,
+    isTokenOnly: true,
+    lpSymbol: 'Bronze BERN',
+    lpAddresses: {
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
     },
     tokenSymbol: 'BERN',
     tokenAddresses: {
-      97: '0xaE81EC0046698fc5B114C75Df1734ecE36A58111',
-      56: '',
+      97: '',
+      56: '0x612b5c1a2d7e94d03dddd53d459d4b944903497d',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
     level: 2
   },
   {
-    pid: 2,
+    pid: 3,
     risk: 5,
     isTokenOnly: true,
-    lpSymbol: 'Pool super',
+    lpSymbol: 'Bronze BARREL',
     lpAddresses: {
-      97: '0x517917Ffbe2950A15E4bbAe609812394F8e95095',
-      56: '', // BONES-BUSD LP
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
     },
-    tokenSymbol: 'BONES',
+    tokenSymbol: 'BARREL',
     tokenAddresses: {
-      97: '0xB0A7525d41D586CD4D0407Eca5042748FC3a01C4',
-      56: '',
+      97: '',
+      56: '0xDB1B7a685e6876d508DE3c5160764B56577a83ae',
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 2
+  },
+  {
+    pid: 4,
+    risk: 5,
+    isTokenOnly: true,
+    lpSymbol: 'Super BERN',
+    lpAddresses: {
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+    },
+    tokenSymbol: 'BERN',
+    tokenAddresses: {
+      97: '',
+      56: '0x612b5c1a2d7e94d03dddd53d459d4b944903497d',
     },
     quoteTokenSymbol: QuoteToken.BUSD,
     quoteTokenAdresses: contracts.busd,
     level: 3
   },
-  // {
-  //   pid: 0,
-  //   risk: 5,
-  //   lpSymbol: 'BONES-BUSD LP',
-  //   lpAddresses: {
-  //     97: '',
-  //     56: '0x19e7cbecdd23a16dfa5573df54d98f7caae03019',
-  //   },
-  //   tokenSymbol: 'BONES',
-  //   tokenAddresses: {
-  //     97: '',
-  //     56: '0xf952fc3ca7325cc27d15885d37117676d25bfda6',
-  //   },
-  //   quoteTokenSymbol: QuoteToken.BUSD,
-  //   quoteTokenAdresses: contracts.busd,
-  //   level: 'public',
-  // },
+  {
+    pid: 5,
+    risk: 5,
+    isTokenOnly: true,
+    lpSymbol: 'Super BARREL',
+    lpAddresses: {
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+    },
+    tokenSymbol: 'BARREL',
+    tokenAddresses: {
+      97: '',
+      56: '0xDB1B7a685e6876d508DE3c5160764B56577a83ae',
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 3
+  },
+
+  {
+    pid: 6,
+    risk: 5,
+    lpSymbol: 'BONES-BUSD LP',
+    lpAddresses: {
+      97: '',
+      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1',
+    },
+    tokenSymbol: 'BONES',
+    tokenAddresses: {
+      97: '',
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB',
+    },
+    quoteTokenSymbol: QuoteToken.BUSD,
+    quoteTokenAdresses: contracts.busd,
+    level: 0,
+  },
   // {
   //   pid: 1,
   //   risk: 5,

@@ -87,7 +87,7 @@ const Algo: React.FC = () => {
             If you want to learn more about our overall perfs and projections, please take a look here.
           </Text>
           <Wrapper mt="12px" style={{justifyContent: 'center'}}>
-            <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/infos/trading-algorithm" mt="15px" variant="primary" style={{textAlign: 'center'}}>
+            <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/infos/trading-algorithm" mt="15px" variant="primary" style={{textAlign: 'center'}} target="_blank">
               LEARN MORE
             </Button>
           </Wrapper>

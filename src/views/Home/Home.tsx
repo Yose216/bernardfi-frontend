@@ -356,7 +356,7 @@ const Home: React.FC = () => {
             </Button>
           </FlexSecondSection>
           <Flex flexDirection="column">
-            <img src="/images/bfc-logo.png" width="500px" alt="logo bernard finance"/>
+            <img src="/images/bfc-logo.png" width="400px" alt="logo bernard finance"/>
           </Flex>
         </FlexSection>
       </Section>

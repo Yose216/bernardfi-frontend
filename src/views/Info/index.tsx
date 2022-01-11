@@ -33,7 +33,7 @@ const Info: React.FC = () => {
             your capital in all conditions.
           </Text>
           <Wrapper mt="12px" style={{justifyContent: 'center'}}>
-            <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/infos/ecosystem-in-details" mt="15px" variant="primary" style={{textAlign: 'center'}}>
+            <Button as="a" target="_blank" href="https://bernard-finance.gitbook.io/bernardswap/infos/ecosystem-in-details" mt="15px" variant="primary" style={{textAlign: 'center'}}>
               LEARN MORE
             </Button>
           </Wrapper>
@@ -61,10 +61,10 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mr="5px" mt="8px" variant="primary">
+                  <Button target="_blank" as="a" href="https://google.com" mr="5px" mt="8px" variant="primary">
                     BUY
                   </Button>
-                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbern" mt="8px" variant="primary">
+                  <Button as="a" target="_blank" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbern" mt="8px" variant="secondary" style={{color: '#fff', borderColor: '#fff'}}>
                     LEARN MORE
                   </Button>
                 </Flex>
@@ -89,10 +89,10 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mr="5px" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
+                  <Button as="a" target="_blank" href="https://google.com" mr="5px" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
                     BUY
                   </Button>
-                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbarrel" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
+                  <Button as="a" target="_blank" variant="secondary" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbarrel" mt="8px" style={{color: '#fff', borderColor: '#fff'}}>
                     LEARN MORE
                   </Button>
                 </Flex>
@@ -117,10 +117,10 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mr="5px" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
+                  <Button as="a" target="_blank" href="https://google.com" mr="5px" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
                     BUY
                   </Button>
-                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbones" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
+                  <Button as="a" target="_blank" style={{color: '#fff', borderColor: '#fff'}} href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbones" mt="8px" variant="secondary">
                     LEARN MORE
                   </Button>
                 </Flex>

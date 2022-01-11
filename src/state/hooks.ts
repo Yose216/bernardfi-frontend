@@ -2,6 +2,10 @@ import BigNumber from 'bignumber.js'
 import { useEffect, useMemo } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import useRefresh from 'hooks/useRefresh'
+import { useBarrelLP, useBernLP } from 'hooks/useContract'
+import { priceBarrelBusd, priceBernBusd } from 'hooks/useLp'
+import { getPriceLp } from '../utils/callHelpers'
+
 import { fetchFarmsPublicDataAsync, fetchPoolsPublicDataAsync, fetchPoolsUserDataAsync, fetchBetsPublicDataAsync, fetchNftsPublicDataAsync } from './actions'
 import { State, Farm, Pool, Bets, Nfts } from './types'
 import { QuoteToken } from '../config/constants/types'
@@ -81,9 +85,9 @@ export const usePoolFromPid = (sousId): Pool => {
 // Prices
 
 export const usePriceBnbBusd = (): BigNumber => {
-  const pid = 0 // BUSD-BNB LP
-  const farm = useFarmFromPid(pid)
-  return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO
+  // const pid = 0 // BUSD-BNB LP
+  // const farm = useFarmFromPid(pid)
+  return ZERO
 }
 
 export const usePriceCakeBusd = (): BigNumber => {
@@ -91,9 +95,19 @@ export const usePriceCakeBusd = (): BigNumber => {
   // const bnbPriceUSD = usePriceBnbBusd()
   // const farm = useFarmFromPid(pid)
   // return farm.tokenPriceVsQuote ? bnbPriceUSD.times(farm.tokenPriceVsQuote) : ZERO
-  const pid = 0; // BONES-BUSD LP
+  const pid = 6; // BONES-BUSD LP
   const farm = useFarmFromPid(pid);
   return farm.tokenPriceVsQuote ? new BigNumber(farm.tokenPriceVsQuote) : ZERO;
+}
+
+export const usePriceBarrelBusd = async() => {
+
+  return 0
+}
+
+export const usePriceBernBusd = async() => {
+
+  return 0
 }
 
 export const useTotalValue = (): BigNumber => {

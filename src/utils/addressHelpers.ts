@@ -23,3 +23,9 @@ export const getLotteryTicketAddress = () => {
 export const getBetsAddress = () => {
   return addresses.bets[chainId]
 }
+export const getBarrelLPAddress = () => {
+  return addresses.barrelLp[chainId]
+}
+export const getBernLPAddress = () => {
+  return addresses.bernLp[chainId]
+}

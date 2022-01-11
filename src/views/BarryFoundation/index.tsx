@@ -54,7 +54,7 @@ const BarryFoundation: React.FC = () => {
             Track bernard.finance’s donations wallet
           </Heading>
           <Text style={{textAlign: 'center'}}>
-            <Button as="a" href="https://www.bscscan.com/address/0xb9C8556C1b759fe5476d9112919fB60E15524A5B)" mt="15px" variant="primary" style={{textAlign: 'center'}}>
+            <Button as="a" target="_blank" href="https://www.bscscan.com/address/0xb9C8556C1b759fe5476d9112919fB60E15524A5B)" mt="15px" variant="primary" style={{textAlign: 'center', borderColor: '#E6C300', background: '#E6C300', color: '#000'}}>
               WALLET
             </Button>
           </Text>

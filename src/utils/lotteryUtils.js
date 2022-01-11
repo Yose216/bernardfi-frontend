@@ -174,7 +174,6 @@ export const getLotteryIssueIndex = async (lotteryContract) => {
 }
 
 export const getLotteryStatus = async (lotteryContract) => {
-  console.log(lotteryContract)
   return lotteryContract.methods.drawed().call()
 }
 
