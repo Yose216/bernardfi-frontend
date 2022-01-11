@@ -60,7 +60,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Classic BERN',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BERN',
     tokenAddresses: {
@@ -78,7 +78,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Classic BARREL',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BARREL',
     tokenAddresses: {
@@ -96,7 +96,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Bronze BERN',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BERN',
     tokenAddresses: {
@@ -114,7 +114,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Bronze BARREL',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BARREL',
     tokenAddresses: {
@@ -132,7 +132,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Super BERN',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BERN',
     tokenAddresses: {
@@ -150,7 +150,7 @@ const farms: FarmConfig[] = [
     lpSymbol: 'Super BARREL',
     lpAddresses: {
       97: '',
-      56: '0x16D1e6fE08E77713989f6A7c1E01Db0494CaA6d1', // BONES-BUSD LP
+      56: '0x27d0408A868Cf4E89B37D20b5E32888dcED95BCB', // BONES-BUSD LP
     },
     tokenSymbol: 'BARREL',
     tokenAddresses: {
