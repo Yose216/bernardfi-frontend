@@ -19,20 +19,25 @@ const Info: React.FC = () => {
       </Outer>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px'}}>
         <Flex flexDirection="column" style={{width: '80%', margin: '50px 0'}} >
-
-          <Text mb="3" mt="" color="text">
+          <Heading size="lg" color="secondary" mb="3">
             bernard.finance is a complete DeFi ecosystem that allows for multiple tokens with proprietary
             mechanics and a complete swap/staking/NFT marketplace/gaming platform aka bernardswap.
-          </Text>
-          <Text mb="3" color="text">
+          </Heading>
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
             Our tokens $BERN, $BARREL and $BONES are designed to suit various investor profiles and to bring balance to a powerful ecosystem.
           </Text>
-          <Text mb="" color="text">
+          <Text mb="" color="text" style={{fontSize:'18px'}}>
             Behind the scene works our algo trading account that fuels everything while taking advantage of
             market weaknesses. Its exceptionnal results shown since mid 2021 are proofs of sustainability and
             bear-market resistance for our assets. It has always been our first priority, make sure to take care of
             your capital in all conditions.
           </Text>
+          <Wrapper mt="12px" style={{justifyContent: 'center'}}>
+            <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/infos/ecosystem-in-details" mt="15px" variant="primary" style={{textAlign: 'center'}}>
+              LEARN MORE
+            </Button>
+          </Wrapper>
+
 
           <Flex flexDirection="column">
             <FlexToken>
@@ -56,8 +61,11 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mt="8px" variant="primary">
+                  <Button as="a" href="https://google.com" mr="5px" mt="8px" variant="primary">
                     BUY
+                  </Button>
+                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbern" mt="8px" variant="primary">
+                    LEARN MORE
                   </Button>
                 </Flex>
               </CardBodyToken>
@@ -81,8 +89,11 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
+                  <Button as="a" href="https://google.com" mr="5px" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
                     BUY
+                  </Button>
+                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbarrel" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
+                    LEARN MORE
                   </Button>
                 </Flex>
               </CardBodyToken>
@@ -106,15 +117,18 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" href="https://google.com" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
+                  <Button as="a" href="https://google.com" mr="5px" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
                     BUY
+                  </Button>
+                  <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbones" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
+                    LEARN MORE
                   </Button>
                 </Flex>
 
               </CardBodyToken>
             </FlexToken>
           </Flex>
-          <Text mb="5" color="text">
+          <Text mb="5" color="text" style={{fontSize:'18px'}}>
             Our NFT gateway system triggers powerstaking, meaning high sustained rewards overtime.
             We designed the whole system to become self sufficient. Every move from users triggers a buyback
             somewhere else to maintain a circular economy exploiting DeFi mechanics and algorithms.

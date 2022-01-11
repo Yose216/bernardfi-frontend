@@ -58,38 +58,39 @@ const Algo: React.FC = () => {
             Algo performance
           </Heading>
           <Heading size="md" color="text">
-            Algorythmic trading account performances.
+            Make profits to buyback.
           </Heading>
 
         </Inner>
       </Outer>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex'}}>
         <Flex flexDirection="column" style={{width: '80%', margin: '50px 0'}} >
-          <Text mb="3" mt="2" color="text">
-            The function of $BARREL algorithm is to bring upward buy pressure via MASSIVE and AUTOMATISED buybacks on the Bernard.finance ecosystem. $BARREL gets to profit from spot trading on the crypto exchange FTX.
+          <Heading size="lg" color="secondary" mb="3">
+            The mission of bernard.finance’s algorithm is to bring upward buy pressure via MASSIVE and AUTOMATISED buybacks on our ecosystem.
+          </Heading>
+          <Text mb="3" mt="2" color="text" style={{fontSize:'18px'}}>
+            With a starting capital of $111,000 raised during $BARREL presale, it trades spot crypto pairs on FTX exchange since July 2021.
           </Text>
-          <Text mb="3" color="text">
-            <span style={{fontWeight:'bold', fontSize: '20px'}}>Continuous growth</span><br/>
-            Thanks to the several burn options, $BARREL is deflationary and its value will increase on each transaction.
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            And we couldn’t be happier with the results, it reached our expectations and even beyond. <span style={{fontWeight:'bold'}}>Consistency, versatility, corrections-proof, great performances.</span>
           </Text>
-          <Text mb="3" color="text">
-            <span style={{fontWeight:'bold', fontSize: '20px'}}>HODL to win</span><br/>
-            6% of each sell will buy back $BARREL. 50% of algo gains will buy back $BARREL. All the buy-backs will be burned.
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            Average perf is close to <span style={{fontWeight:'bold'}}>8.5–10 % per month</span> which was our high end goal and is fantastic results for a spot algo
           </Text>
-          <Text mb="3" color="text">
-            <span style={{fontWeight:'bold', fontSize: '20px'}}>Certik audited</span><br/>
-            BARREL has been successfully audited by Certik
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            We expect profits to greatly increase due to global compounding, $BONES sell tax and bernardswap mechanics.
           </Text>
-          <Text mb="3" color="text">
-            <span style={{fontWeight:'bold', fontSize: '20px'}}>Exclusivity</span><br/>
-            $BARREL holders will be the first to know about the next bernard.finance projects and will be incentivised to participate in future events.
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            Algo profits are reinjected twice a month in bernard.finance ecosystem, 50% to buyback $BARREL, 30% to buyback $BERN, and auto compound.
           </Text>
-          <Text mb="3" color="text">
-            Buybacks are done every 2 weeks
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            If you want to learn more about our overall perfs and projections, please take a look here.
           </Text>
-          <Text mb="3" color="text">
-            $BARREL trading bot Update of (daydate) :
-          </Text>
+          <Wrapper mt="12px" style={{justifyContent: 'center'}}>
+            <Button as="a" href="https://bernard-finance.gitbook.io/bernardswap/infos/trading-algorithm" mt="15px" variant="primary" style={{textAlign: 'center'}}>
+              LEARN MORE
+            </Button>
+          </Wrapper>
 
           <div style={{height: "500px", marginTop: "50px"}}>
             <Heading size="md" color="primary" style={{textAlign:"center", marginBottom: "15px"}}>
@@ -150,6 +151,10 @@ background: linear-gradient(139.73deg, #27262cb3 0%, #548d65 100%);
 
     }
   }
+`
+
+const Wrapper = styled(Flex)`
+  align-items: center;
 `
 
 export default Algo

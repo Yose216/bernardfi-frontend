@@ -11,12 +11,12 @@ const config: MenuEntry[] = [
     icon: 'FarmIcon',
     items: [
       {
-        label: 'Farms',
-        href: '/farms',
-      },
-      {
         label: 'Pools',
         href: '/nests',
+      },
+      {
+        label: 'Farms',
+        href: '/farms',
       },
     ],
   },

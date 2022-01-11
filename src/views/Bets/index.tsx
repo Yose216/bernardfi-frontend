@@ -2,6 +2,9 @@ import React, { useState, useEffect, useCallback } from 'react'
 import { Image, Heading, Text, Button, Flex, PrizeIcon, VoteIcon, Won} from '@pancakeswap-libs/uikit'
 import styled from 'styled-components'
 import useTokenBalance from 'hooks/useTokenBalance'
+import Countdown from 'react-countdown';
+import UnlockButton from 'components/UnlockButton'
+
 import { useBets } from 'state/hooks'
 import { useBetsApprove } from 'hooks/useApprove'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
@@ -61,6 +64,16 @@ const Bets: React.FC = () => {
     }
   }, [onApprove])
 
+  const renderer = ({ days, hours, minutes, seconds, completed }) => {
+    if (days !== 0) {
+      return (
+        `${days} days and ${hours} hours remainings`
+      )
+    }
+    return (
+      `${hours}:${minutes}:${seconds} remainings`
+    )
+};
   return (
     <>
       <Outer>
@@ -93,11 +106,16 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px">
                 <PrizeIcon color="secondary" width="40px"/>
                 <Flex flexDirection="column" >
-                  <Text mb="4px" ml="3" style={{fontSize:'20px'}}>$BONES Jackpot</Text>
+                  <Text ml="3" style={{fontSize:'20px'}}>$BONES Jackpot </Text>
+                  <Text ml="3" style={{fontSize:'12px'}}>Show your skills in betting and win the Jackpot each month. Biggest gambler will take it all.</Text>
+
                 </Flex>
               </Wrapper>
-              <Wrapper mb="12px" style={{minHeight: '100px'}}>
+              <Wrapper style={{minHeight: '100px'}}>
                 <Heading mb="4px" ml="3" color="secondary" style={{fontSize:'50px'}}>-</Heading>
+              </Wrapper>
+              <Wrapper >
+                <Text ml="3" style={{fontSize:'14px'}}>Next winner picked in: <Countdown date={1646002800000} renderer={renderer}/></Text>
               </Wrapper>
             </CardBodyData>
             <CardBodyData >
@@ -117,27 +135,36 @@ const Bets: React.FC = () => {
 
           <FlexToken>
             <CardBodyToken className="sport">
-              <Wrapper mb="12px">
-                <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Sports</Heading>
-
-              </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <FlexBern>
                   <img style={{minWidth: '200px'}} src="images/bets_2.png" alt="logo" width={200} height={200} />
-                  <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                  <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Sports</Heading>
+
                 </FlexBern>
               </Wrapper>
+              <Wrapper mb="12px" style={{justifyContent: 'center'}}>
+              {!account ?
+                <UnlockButton mt="8px" style={{textAlign: 'center'}}/>
+                : null
+              }
               { allowance.toString() === "0" && account ?
                 <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
                   Approve
                 </Button>
-                : betsSport.map(b => {
+                : null
+              }
+              </Wrapper>
+
+              { allowance.toString() !== "0" && account ?
+                betsSport.map(b => {
                   if (b.finished === false && account) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
                     return null
                 })
+                :
+                null
               }
               {allowance.toString() !== "0" && account  ?
                 <>
@@ -164,29 +191,35 @@ const Bets: React.FC = () => {
             </CardBodyToken>
 
             <CardBodyToken className="others">
-              <Wrapper mb="12px">
-                <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Others</Heading>
-
-              </Wrapper>
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <FlexBern>
                   <img style={{minWidth: '200px'}} src="images/bets_1.png" alt="logo" width={200} height={200} />
-                  <Text fontSize="15px">Sed gravida, mi non bibendum volutpat, elit velit rhoncus neque, ac consequat erat ligula vitae nunc. Donec iaculis diam sed consequat rutrum. Integer lobortis bibendum felis. Donec rutrum dictum urna, id laoreet odio eleifend eu. Nulla varius ac tellus a porta. Aliquam sollicitudin tincidunt lacus sit amet molestie. Curabitur lectus justo, fringilla sed neque tempus, porttitor dictum turpis. Pellentesque rutrum, nisl vitae tincidunt vehicula.</Text>
+                  <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Others</Heading>
                 </FlexBern>
               </Wrapper>
-              {allowance.toString() === "0" && account  ?
-                <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
-                  Approve
-                </Button>
-                : betsOther.map(b => {
+              <Wrapper mb="12px" style={{justifyContent: 'center'}}>
+                {!account ?
+                  <UnlockButton mt="8px" style={{textAlign: 'center'}}/>
+                  : null
+                }
+                { allowance.toString() === "0" && account ?
+                  <Button variant="primary" disabled={requestedApproval} onClick={handleApprove} >
+                    Approve
+                  </Button>
+                  : null
+                }
+              </Wrapper>
+              {allowance.toString() !== "0" && account  ?
+                betsOther.map(b => {
                   if (b.finished === false && account ) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
                     return null
-                })
+                }) :
+                null
               }
-              {allowance.toString() !== "0" ?
+              {allowance.toString() !== "0" && account ?
                 <>
                   <ExpandableSectionButton
                     onClick={() => setShowExpandableSectionOther(!showExpandableSectionOther)}
@@ -208,6 +241,11 @@ const Bets: React.FC = () => {
               }
             </CardBodyToken>
 
+            <Wrapper mt="12px" style={{justifyContent: 'center'}}>
+              <Button variant="primary" as="a" href="https://bernard-finance.gitbook.io/bernardswap/how-to/play-the-bernardo-bets)" >
+                LEARN MORE
+              </Button>
+            </Wrapper>
           </FlexToken>
         </Flex>
       </Page>

@@ -79,7 +79,9 @@ const BetsLine: React.FC<Props> = ({ b }) => {
 
         {!b.finished && b.amountBet > 0 ?
           <>
-            <TextCard style={{color: "#5DCE80"}}>You bet {getBalanceNumber(b.amountBet).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES on {betSide}<br/></TextCard>
+            <ButtonCard onClick={onPresentBuy} variant="primary" >
+              Bets
+            </ButtonCard>
           </>
           : null
         }
@@ -97,17 +99,17 @@ const BetsLine: React.FC<Props> = ({ b }) => {
         }
 
         {b.claimable && b.claimed && (
-          <TextCard style={{color: "orange"}}>Already claimed</TextCard>
+          <TextCard style={{color: "orange", textAlign: 'center'}}>Already claimed</TextCard>
           )
         }
 
         {!b.claimable && b.finished && b.amountBet > 0 && (
-          <TextCard style={{color: "red"}}>You lost :(</TextCard>
+          <TextCard style={{color: "red", textAlign: 'center'}}>You lost :(</TextCard>
           )
         }
 
         {!b.claimable && b.finished && !b.amountBet && (
-          <TextCard style={{color: "red"}}>you did not bet :(</TextCard>
+          <TextCard style={{color: "red", textAlign: 'center'}}>you did not bet :(</TextCard>
           )
         }
 

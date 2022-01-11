@@ -12,11 +12,16 @@ const Marketplace: React.FC = () => {
           <Heading as="h1" size="xxl" color="primary" mb="24px">
             NFT Marketplace (coming soon)
           </Heading>
-          <Heading size="lg" color="text">
-            Lorem ipsum it dolor.
-          </Heading>
         </Inner>
       </Outer>
+
+      <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px', padding: '30px'}}>
+        <Heading size="lg" color="orange">
+          Our NFT marketplace is under construction.<br/>
+          But bernard.finance NFTs are available on our <a href="https://www.featured.market/profile/bernard_finance" rel="noreferrer" target="_blank" style={{color: "#5DCE80", textDecoration: 'underline'}}>partner platform</a>.<br/>
+          Soon you will be able to buy, sell, trade bernard.finance seasonal NFTs and The Bernardo Fight Club items on bernardswap.
+        </Heading>
+      </Page>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px'}}>
         <img width="700px" src="/images/worker.png" alt="info" />
       </Page>

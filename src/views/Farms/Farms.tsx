@@ -122,12 +122,29 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
                 'Stake LP tokens to earn $BONES'
             }
           </Heading>
-          <Heading as="h2" color="text" style={{ textAlign: 'center' }}>
-            Deposit Fee will be used to buyback $BONES
+          <Heading as="h2" size="lg" color="text" style={{ textAlign: 'center' }}>
+          {
+            tokenMode ?
+              'NFTs with a use case, finally'
+              :
+              'Holding is rewarding'
+          }
           </Heading>
         </Inner>
       </Outer>
-
+      {
+        tokenMode ?
+        <div style={{marginBottom: '30px'}}>
+          <Heading as="h3" color="text" style={{ textAlign: 'center' }}>
+            Buy and hold bernard.finance’s seasonal NFTs to enjoy highest sustained rewards in DeFi.
+          </Heading>
+          <Text color="red" style={{ textAlign: 'center' }}>
+            Be careful : If you sell or transfer your NFT while staking, you will lose your staking rewards.
+          </Text>
+        </div>
+        :
+        null
+      }
 
       <FarmTabButtons stakedOnly={stakedOnly} setStakedOnly={setStakedOnly}/>
       <div >
@@ -146,13 +163,28 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         <Section>
           <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
             <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
-              <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Claim your NFT airdrop !</span></Heading>
+            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Claim your NFT airdrop !</span></Heading>
+            {
+              tokenMode ?
               <Text mt="10px">
-                Hold/stake BONES-BUSD LP tokens and claim your NFT airdrop !<br/>
-                This Bronze BONES Special Edition helmet is the first piece of equipment you can get for our incoming game The Bernardo Fight Club. You can claim yours if you hold X LP tokens (TBD) until X of X. This NFT opens gates to Bronze bernardswap staking pools.
+              bernard.finance seasonal NFT holders will be airdropped one guaranteed α gen. BFC portal per NFT held.
+Doghouses portals allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
+Simply buy and hold before 1st of March to be airdropped.
               </Text>
+              :
               <Text mt="10px">
-                <Countdown date={Date.now() + 1000000000} renderer={renderer}/>
+              Stake BONES-BUSD LP to become eligible to  β generation BFC portals airdrop.<br/>
+
+X doghouses portals will be distributed to LP holders. They allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
+Snapshot will happen between 12th January 2022 and 15th of March.
+We will airdrop portals to holders taking in consideration two variables : 1. Amount of time of staking, 2. quantity of LP.<br/>
+
+You help us being stronger, we reward you, simple as that.
+              </Text>
+            }
+
+              <Text mt="10px">
+                <Countdown date={tokenMode ? 1646089200000 : 1647298800000} renderer={renderer}/>
               </Text>
             </FlexSecondSection>
             <Flex flexDirection="column">
