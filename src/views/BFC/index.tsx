@@ -20,9 +20,36 @@ const BFC: React.FC = () => {
         </Inner>
       </Outer>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px'}}>
-        <Flex flexDirection="column" >
-          <div style={{paddingBottom: '20px', paddingTop: '30px'}}>
-            <img width="800px" src="/images/BFC-infography.jpeg" alt="info" />
+        <Flex flexDirection="column" style={{width: '80%', margin: '50px 0'}}>
+          <Heading size="lg" color="#ee002f" mb="3">
+            The Bernardo Fight Club is a Play to Earn game built on the BSC.
+          </Heading>
+          <div style={{paddingBottom: '20px', paddingTop: '30px', textAlign: "center"}}>
+            <img width="900px" src="/images/BFC-timeline.png" alt="info" />
+          </div>
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            Hold an NFT / Stake LP to get a free portal, or get whitelisted to access the distribution presale. (*whitelisting process will start soon)
+          </Text>
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            A portal allows you to <span style={{color: '#2163e2'}}>mint your bernardo with random stats</span> generated with Chainlink VRF.
+            <span style={{color: '#ee002f'}}> Chances</span> to mint the rarest bernardo possible are the <span style={{color: '#ee002f'}}>same for everyone</span>. You can buy portals/mint bernardos as much as you want.
+          </Text>
+          <div style={{paddingBottom: '20px', paddingTop: '30px', textAlign: "center"}}>
+            <img width="900px" src="/images/BFC_table.png" alt="info" />
+          </div>
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            Bernardo is your doggo, take care of him, give him love/food/equipment and <span style={{color: '#ee002f'}}>he will give his life for you</span>.
+            Participate in raffles to win gear or use superbiscuits to boost your Rarity Score (RS), and <span style={{color: '#2163e2'}}>challenge players to win the RS farming contests.</span>
+          </Text>
+          <Text mb="3" color="text" style={{fontSize:'18px'}}>
+            Once ready, send bernardo into the arenas, to fight big boys and other players. <span style={{color: '#ee002f'}}>A well trained bernardo is a cash machine.</span>
+          </Text>
+          <Heading size="lg" color="#2163e2" mb="3">
+          100 % of The Bernardo Fight Club economy is redistributed to players and bernard.finance ecosystem.
+          </Heading>
+
+          <div style={{paddingBottom: '20px', paddingTop: '30px', textAlign: "center"}}>
+            <img width="900px" src="/images/BFC-infography.png" alt="info" />
           </div>
 
         </Flex>

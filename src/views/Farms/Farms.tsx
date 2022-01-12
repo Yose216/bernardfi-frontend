@@ -196,23 +196,28 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         <Section>
           <FlexSection flexDirection="row" justifyContent="space-between" alignItems="center">
             <FlexSecondSection flexDirection="column" style={{textAlign: 'left'}}>
-            <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Claim your NFT airdrop !</span></Heading>
+            {tokenMode ?
+              <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Holding an NFT grants you free access to The Bernardo Fight Club</span></Heading>
+              :
+              <Heading color="text" size="xl"><span style={{color: '#5DCE80'}}>Stake BONES-BUSD LP tokens to win a free acces to The Bernardo Fight Club</span></Heading>
+
+            }
             {
               tokenMode ?
               <Text mt="10px">
-              bernard.finance seasonal NFT holders will be airdropped one guaranteed α gen. BFC portal per NFT held.
-Doghouses portals allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
-Simply buy and hold before 1st of March to be airdropped.
+                bernard.finance seasonal NFT holders will be airdropped one guaranteed α gen. BFC portal per NFT held.
+                Doghouses portals allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
+                Simply buy and hold before 1st of March to be airdropped.
               </Text>
               :
               <Text mt="10px">
-              Stake BONES-BUSD LP to become eligible to  β generation BFC portals airdrop.<br/>
+                Stake BONES-BUSD LP to become eligible to  β generation BFC portals airdrop.<br/>
 
-X doghouses portals will be distributed to LP holders. They allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
-Snapshot will happen between 12th January 2022 and 15th of March.
-We will airdrop portals to holders taking in consideration two variables : 1. Amount of time of staking, 2. quantity of LP.<br/>
+                100 doghouses portals will be distributed to LP holders. They allow you to freely mint 1 random bernardo character for our next game « The Bernardo Fight Club ».
+                Snapshot will happen between 12th January 2022 and 15th of March.
+                We will airdrop portals to holders taking in consideration two variables : 1. Amount of time of staking, 2. quantity of LP.<br/>
 
-You help us being stronger, we reward you, simple as that.
+                You help us being stronger, we reward you, simple as that.
               </Text>
             }
 
@@ -221,11 +226,12 @@ You help us being stronger, we reward you, simple as that.
               </Text>
             </FlexSecondSection>
             <Flex flexDirection="column">
-              <video autoPlay muted playsInline loop width="250" >
-                <track default kind="captions" srcLang="en" src="/media/examples/friday.vtt" />
-                <source src="/images/viking-helmet-BFC.mp4" type="video/mp4" />
+            { tokenMode ?
+              <img width="350px" src="/images/nft-pool.png" alt="nft to win" />
+              :
+              <img width="350px" src="/images/nft-farm.png" alt="nft to win" />
+            }
 
-              </video>
             </Flex>
           </FlexSection>
         </Section>

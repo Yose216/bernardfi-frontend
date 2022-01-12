@@ -38,8 +38,6 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
   const isApproved = account && allowance && allowance.isGreaterThan(0)
   const nfts = useNfts()
 
-  // const res = useNft('0x5c2903Fc47F82822C7A7cCA78146847Ef97c57D0', 1)
-
   let available = false;
   if (farm.level === 0) {
     available = true;
@@ -77,7 +75,7 @@ const CardActions: React.FC<FarmCardActionsProps> = ({ farm, ethereum, account }
     if (!available) {
       return (
         <Button mt="8px" fullWidth disabled={!available}>
-          Hold NFT to acces this farm
+          Hold NFT to acces this pool
         </Button>
       )
     }

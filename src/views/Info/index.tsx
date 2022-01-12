@@ -61,7 +61,7 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button target="_blank" as="a" href="https://google.com" mr="5px" mt="8px" variant="primary">
+                  <Button target="_blank" as="a" href="https://swap.bernard.finance/#/swap?outputCurrency=0x27d0408a868cf4e89b37d20b5e32888dced95bcb" mr="5px" mt="8px" variant="primary">
                     BUY
                   </Button>
                   <Button as="a" target="_blank" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbern" mt="8px" variant="secondary" style={{color: '#fff', borderColor: '#fff'}}>
@@ -89,7 +89,7 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" target="_blank" href="https://google.com" mr="5px" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
+                  <Button as="a" target="_blank" href="https://swap.bernard.finance/#/swap?outputCurrency=0xdb1b7a685e6876d508de3c5160764b56577a83ae" mr="5px" mt="8px" style={{background: '#E65409', borderColor: '#E65409'}}>
                     BUY
                   </Button>
                   <Button as="a" target="_blank" variant="secondary" href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbarrel" mt="8px" style={{color: '#fff', borderColor: '#fff'}}>
@@ -117,7 +117,7 @@ const Info: React.FC = () => {
                 </Flex>
 
                 <Flex justifyContent='center'>
-                  <Button as="a" target="_blank" href="https://google.com" mr="5px" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
+                  <Button as="a" target="_blank" href="https://swap.bernard.finance/#/swap?outputCurrency=0x612b5c1a2d7e94d03dddd53d459d4b944903497d" mr="5px" mt="8px" style={{background: '#d4a96f', borderColor: '#d4a96f'}}>
                     BUY
                   </Button>
                   <Button as="a" target="_blank" style={{color: '#fff', borderColor: '#fff'}} href="https://bernard-finance.gitbook.io/bernardswap/tokenomics/usdbones" mt="8px" variant="secondary">

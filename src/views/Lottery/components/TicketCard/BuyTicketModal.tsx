@@ -44,7 +44,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         Math.floor(Math.random() * maxNumber) + 1,
         Math.floor(Math.random() * maxNumber) + 1,
       ])
-      const txHash = await onMultiBuy('10', numbers)
+      const txHash = await onMultiBuy('1000', numbers)
       // user rejected tx or didn't go thru
       if (txHash) {
         setRequestedBuy(false)
@@ -92,7 +92,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         <Button
           id="lottery-buy-complete"
           fullWidth
-          disabled={pendingTx || parseInt(val) > Number(maxTickets) || parseInt(val) > 50 || parseInt(val) < 1}
+          disabled={pendingTx || parseInt(val) > Number(maxTickets) || parseInt(val) > 15 || parseInt(val) < 1}
           onClick={async () => {
             setPendingTx(true)
             await handleBuy()
