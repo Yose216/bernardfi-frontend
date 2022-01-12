@@ -436,6 +436,86 @@ const nftTypes: NftType[] = [
     id: '2',
     level: '3',
   },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '0',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '1',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '2',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '3',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '4',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '5',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '6',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '7',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '8',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '9',
+    level: '1',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '10',
+    level: '2',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '11',
+    level: '2',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '12',
+    level: '2',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '13',
+    level: '2',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '14',
+    level: '3',
+  },
+  {
+    address: '0x042395289fbe8bafc1e0d5a3ba06233a0cd1296e',
+    id: '15',
+    level: '3',
+  },
 
 ]
 

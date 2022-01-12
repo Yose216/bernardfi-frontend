@@ -39,16 +39,16 @@ const config: MenuEntry[] = [
     icon: 'TicketIcon',
     items: [
       {
-        label: 'Lottery',
-        href: '/lottery',
+        label: 'BFC',
+        href: '/bfc',
       },
       {
         label: 'Bets',
         href: '/bets',
       },
       {
-        label: 'BFC',
-        href: '/bfc',
+        label: 'Lottery',
+        href: '/lottery',
       },
     ],
   },

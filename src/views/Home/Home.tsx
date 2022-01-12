@@ -237,7 +237,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Button as="a" href="/farms" variant="secondary" style={{border: '2px solid #664EA0', color: '#664EA0'}}>
+                  <Button as="a" href="/nests" variant="secondary" style={{border: '2px solid #664EA0', color: '#664EA0'}}>
                     Stake!
                   </Button>
                 </div>

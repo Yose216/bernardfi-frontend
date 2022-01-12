@@ -112,7 +112,7 @@ const Bets: React.FC = () => {
                 </Flex>
               </Wrapper>
               <Wrapper style={{minHeight: '100px'}}>
-                <Heading mb="4px" ml="3" color="secondary" style={{fontSize:'50px'}}>-</Heading>
+                <Heading mb="4px" ml="3" color="secondary" style={{fontSize:'50px'}}>2 BNB to win</Heading>
               </Wrapper>
               <Wrapper >
                 <Text ml="3" style={{fontSize:'14px'}}>Next winner picked in: <Countdown date={1646002800000} renderer={renderer}/></Text>

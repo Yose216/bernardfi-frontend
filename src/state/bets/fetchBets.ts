@@ -12,7 +12,7 @@ const CHAIN_ID = process.env.REACT_APP_CHAIN_ID
 const fetchBets = async (account) => {
 
   let process = true;
-  let id = 1;
+  let id = 2;
   const data = [];
   while (process) {
 
