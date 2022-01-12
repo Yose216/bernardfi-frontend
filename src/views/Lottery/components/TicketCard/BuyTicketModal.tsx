@@ -25,7 +25,7 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
   }, [max])
 
   const maxTickets = useMemo(() => {
-    return parseInt(getFullDisplayBalance(max.div(new BigNumber(10))))
+    return parseInt(getFullDisplayBalance(max.div(new BigNumber(1000))))
   }, [max])
 
   const handleChange = (e: React.FormEvent<HTMLInputElement>) => setVal(e.currentTarget.value)
@@ -55,15 +55,15 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
   }, [onMultiBuy, setRequestedBuy, maxNumber, val])
 
   const handleSelectMax = useCallback(() => {
-    if (Number(maxTickets) > 50) {
-      setVal('50')
+    if (Number(maxTickets) > 15) {
+      setVal('15')
     } else {
       setVal(maxTickets.toString())
     }
   }, [maxTickets])
 
   const cakeCosts = (amount: string): number => {
-    return +amount * 10
+    return +amount * 1000
   }
   return (
     <Modal title={TranslateString(450, 'Enter amount of tickets to buy')} onDismiss={onDismiss}>
@@ -76,8 +76,8 @@ const BuyTicketModal: React.FC<BuyTicketModalProps> = ({ max, onDismiss }) => {
         availableSymbol="BONES"
       />
       <div>
-        <Tips>Your amount must be a multiple of 10 $BONES</Tips>
-        <Tips>1 Ticket = 10 $BONES</Tips>
+        <Tips>Your amount must be a multiple of 1000 $BONES</Tips>
+        <Tips>1 Ticket = 1000 $BONES</Tips>
       </div>
       <div>
         <Announce>

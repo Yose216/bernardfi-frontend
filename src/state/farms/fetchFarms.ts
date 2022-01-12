@@ -74,7 +74,6 @@ const fetchFarms = async () => {
       }else{
         // Ratio in % a LP tokens that are in staking, vs the total number in circulation
         const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
-
         // Total value in staking in quote token value
         lpTotalInQuoteToken = new BigNumber(quoteTokenBlanceLP)
           .div(new BigNumber(10).pow(18))
@@ -90,6 +89,8 @@ const fetchFarms = async () => {
         if(tokenAmount.comparedTo(0) > 0){
           tokenPriceVsQuote = quoteTokenAmount.div(tokenAmount);
         }else{
+          console.log(quoteTokenBlanceLP.toString())
+          console.log(tokenBalanceLP.toString())
           tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
         }
       }
@@ -109,6 +110,7 @@ const fetchFarms = async () => {
           name: 'BONESPerBlock',
         },
       ])
+
 
       const allocPoint = new BigNumber(info.allocPoint._hex)
       const poolWeight = allocPoint.div(new BigNumber(totalAllocPoint))

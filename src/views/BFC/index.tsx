@@ -11,18 +11,19 @@ const BFC: React.FC = () => {
       <Outer>
         <Inner>
           <img  src="/images/bfc-logo.png" alt="phishing-warning" width="300px"/>
+          <Title style={{paddingBottom: '30px', textAlign: 'center'}}>
+            <Gradient>Bernardo Fight Club</Gradient>
+          </Title>
           <Heading size="lg" color="text">
             Coming SOON
           </Heading>
-
         </Inner>
       </Outer>
       <Page style={{justifyContent: 'center', alignItems: 'center', flex: 1, display: 'flex', minHeight: '0px'}}>
         <Flex flexDirection="column" >
-          <Title style={{paddingBottom: '30px'}}>
-            <Gradient>Bernardo Fight Club</Gradient>
-          </Title>
-          <img width="700px" src="/images/BFC-infography.png" alt="info" />
+          <div style={{paddingBottom: '20px', paddingTop: '30px'}}>
+            <img width="800px" src="/images/BFC-infography.jpeg" alt="info" />
+          </div>
 
         </Flex>
       </Page>
@@ -49,7 +50,7 @@ const Title = styled.h1`
 `
 
 const Gradient = styled('span')(({ theme }) => ({
-  background: 'linear-gradient(90deg, #2163e2 30%, #ee002f 100%)',
+  background: 'linear-gradient(90deg, #ee002f 30%, #2163e2 100%)',
   '-webkitBackgroundClip': 'text',
   '-webkitTextFillColor': 'transparent',
 }));

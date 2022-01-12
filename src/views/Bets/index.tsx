@@ -242,7 +242,7 @@ const Bets: React.FC = () => {
             </CardBodyToken>
 
             <Wrapper mt="12px" style={{justifyContent: 'center'}}>
-              <Button variant="primary" as="a" href="https://bernard-finance.gitbook.io/bernardswap/how-to/play-the-bernardo-bets)" >
+              <Button target="_blank" variant="primary" as="a" href="https://bernard-finance.gitbook.io/bernardswap/how-to/play-the-bernardo-bets" >
                 LEARN MORE
               </Button>
             </Wrapper>

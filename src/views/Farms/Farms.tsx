@@ -44,6 +44,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const [stakedOnly, setStakedOnly] = useState(false)
   const activeFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X')
   const inactiveFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier === '0X')
+  const classicFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.level === 1)
+  const bronzeFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.level === 2)
+  const superFarms = farmsLP.filter((farm) => !!farm.isTokenOnly === !!tokenMode && farm.multiplier !== '0X' && farm.level === 3)
 
   const stakedOnlyFarms = activeFarms.filter(
     (farm) => farm.userData && new BigNumber(farm.userData.stakedBalance).isGreaterThan(0),
@@ -151,7 +154,37 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         <Divider />
         <FlexFarm >
           <Route exact path={`${path}`}>
-            {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
+            <Flex flexDirection="column" >
+              {tokenMode ?
+                <>
+                  <Heading as="h3" size="xl" color="primary" style={{ textAlign: 'center', paddingBottom: '10px' }}>
+                    Classic pools
+                  </Heading>
+                  <FlexToken>
+                    {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(classicFarms, false)}
+                  </FlexToken>
+                  <Divider />
+                  <Heading as="h3" size="xl" color="#cd7f32" style={{ textAlign: 'center', paddingBottom: '10px' }}>
+                    Bronze pools
+                  </Heading>
+                  <FlexToken>
+                    {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(bronzeFarms, false)}
+                  </FlexToken>
+                  <Divider />
+                  <Heading as="h3" size="xl" color="#E6C300" style={{ textAlign: 'center', paddingBottom: '10px' }}>
+                    Super pools
+                  </Heading>
+                  <FlexToken>
+                    {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(superFarms, false)}
+                  </FlexToken>
+                </> :
+                <FlexToken>
+                  {stakedOnly ? farmsList(stakedOnlyFarms, false) : farmsList(activeFarms, false)}
+                </FlexToken>
+              }
+
+            </Flex>
+
           </Route>
           <Route exact path={`${path}/history`}>
             {farmsList(inactiveFarms, true)}
@@ -223,17 +256,16 @@ const Inner = styled(Container)`
   }
 `
 
+const FarmRow = styled(Flex)`
+  flex-direction: column;
+
+`
+
 const FlexFarm = styled.div`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
-& > * {
-  min-width: 280px;
-  max-width: 28%;
-  width: 100%;
-  margin: 0 30px;
-  margin-bottom: 32px;
-}
+
 `
 const Section = styled.div`
   align-items: center;
@@ -259,6 +291,31 @@ const FlexSecondSection = styled(Flex)`
   width: 60%;
   @media screen and (max-width: 768px) {
     width: 90%;
+  }
+
+`
+
+const FlexToken = styled(Flex)`
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  padding-top: 25px;
+  padding-bottom: 25px;
+  & > * {
+    min-width: 380px;
+    max-width: 49%;
+    width: 100%;
+    margin: 0 30px;
+    margin-bottom: 32px;
+  }
+  @media screen and (max-width:968px) {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & > * {
+      min-width: 280px;
+    }
   }
 
 `

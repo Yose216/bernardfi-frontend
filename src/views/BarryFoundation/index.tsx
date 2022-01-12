@@ -50,12 +50,9 @@ const BarryFoundation: React.FC = () => {
             - Make the public aware of the fact that the Saint Bernards from the hospice are both a Swiss cultural asset and a symbol of the friendship between man and dog.
           </Text>
 
-          <Heading as="h1" size="md" color="text" mt="50px" style={{textAlign: 'center'}}>
-            Track bernard.finance’s donations wallet
-          </Heading>
           <Text style={{textAlign: 'center'}}>
-            <Button as="a" target="_blank" href="https://www.bscscan.com/address/0xb9C8556C1b759fe5476d9112919fB60E15524A5B)" mt="15px" variant="primary" style={{textAlign: 'center', borderColor: '#E6C300', background: '#E6C300', color: '#000'}}>
-              WALLET
+            <Button as="a" target="_blank" href="https://www.bscscan.com/address/0xb9C8556C1b759fe5476d9112919fB60E15524A5B" mt="15px" variant="primary" style={{textAlign: 'center', borderColor: '#E6C300', background: '#E6C300', color: '#000'}}>
+              Track bernard.finance’s donations wallet
             </Button>
           </Text>
         </Flex>
