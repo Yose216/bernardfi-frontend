@@ -138,7 +138,11 @@ const Bets: React.FC = () => {
               <Wrapper mb="12px" style={{minHeight: '100px'}}>
                 <FlexBern>
                   <img style={{minWidth: '200px'}} src="images/bets_2.png" alt="logo" width={200} height={200} />
-                  <Heading mb="4px" ml="3" style={{fontSize:'33px', textAlign: "center"}}>Sports</Heading>
+                  <Heading mb="4px" ml="3" style={{fontSize:'33px'}}>
+                    Sports<br/>
+                    <span style={{fontSize:'16px'}}>Bet on the match result (excluding extra-time and penalty shoot-out).</span>
+
+                  </Heading>
 
                 </FlexBern>
               </Wrapper>

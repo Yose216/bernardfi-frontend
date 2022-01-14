@@ -1,11 +1,10 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import BigNumber from 'bignumber.js'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
-import { priceBarrelBusd, priceBernBusd } from 'hooks/useLp'
+import { usePriceCakeBusd, usePrices } from 'state/hooks'
 import { allLanguages } from 'config/localisation/languageCodes'
 import { LanguageContext } from 'contexts/Localisation/languageContext'
 import useTheme from 'hooks/useTheme'
-import { usePriceCakeBusd, usePriceBarrelBusd, usePriceBernBusd } from 'state/hooks'
 import { Menu as UikitMenu } from '@pancakeswap-libs/uikit'
 import config from './config'
 
@@ -13,16 +12,20 @@ const Menu = (props) => {
   const { account, connect, reset } = useWallet()
   const [barrelPrice, setBarrelPrice] = useState(0)
   const [bernPrice, setBernPrice] = useState(0)
+
   const { selectedLanguage, setSelectedLanguage } = useContext(LanguageContext)
   const { isDark, toggleTheme } = useTheme()
   const cakePriceUsd = usePriceCakeBusd()
-  priceBarrelBusd().then((response) => {
-    setBarrelPrice(response[0])
-  })
-  priceBernBusd().then((response) => {
-    setBernPrice(response[0])
-  })
-
+  const prices = usePrices()[0]
+  useEffect(() => {
+  const timer = setTimeout(() => {
+    if (prices) {
+      setBernPrice(prices.bernPrice)
+      setBarrelPrice(prices.barrelPrice)
+    }
+  }, 1000);
+  return () => clearTimeout(timer);
+}, [prices]);
 
   return (
     <UikitMenu

@@ -90,7 +90,6 @@ const fetchBets = async (account) => {
 
   }
 
-console.log(data);
   return data
 }
 

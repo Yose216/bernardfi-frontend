@@ -332,6 +332,11 @@ const nftTypes: NftType[] = [
     level: '1',
   },
   {
+    address: '0x9b864047e5b59260e1186a06f2826b179a7873ea',
+    id: '4',
+    level: '1',
+  },
+  {
     address: '0xd92f2817bc7a9ff5d3b572edfde042970c0d7784',
     id: '0',
     level: '1',

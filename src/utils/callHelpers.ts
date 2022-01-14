@@ -25,7 +25,7 @@ export const claim = async (contract, id, account) => {
     })
 }
 
-export const getPriceLp = async (contract, account) => {
+export const getPriceLp = async (contract) => {
   return contract.methods
     .getReserves()
     .call()

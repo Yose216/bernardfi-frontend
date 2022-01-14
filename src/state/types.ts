@@ -14,7 +14,8 @@ export interface Farm extends FarmConfig {
     tokenBalance: BigNumber
     stakedBalance: BigNumber
     earnings: BigNumber
-  }
+  },
+  allocPoint?: BigNumber
 }
 
 export interface Pool extends PoolConfig {
@@ -51,6 +52,12 @@ export interface Nfts extends NftsConfig {
   owned: boolean
 }
 
+export interface Prices {
+  barrelPrice: number
+  bernPrice: number
+  bnbPrice: number
+}
+
 // Slices states
 
 export interface FarmsState {
@@ -69,6 +76,10 @@ export interface NftsState {
   data: Nfts[]
 }
 
+export interface PricesState {
+  data: Prices[]
+}
+
 // Global state
 
 export interface State {
@@ -76,4 +87,5 @@ export interface State {
   pools: PoolsState
   bets: BetsState
   nfts: NftsState
+  prices: PricesState
 }

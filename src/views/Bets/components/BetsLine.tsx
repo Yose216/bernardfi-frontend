@@ -104,7 +104,7 @@ const BetsLine: React.FC<Props> = ({ b }) => {
         }
 
         {!b.claimable && b.finished && b.amountBet > 0 && (
-          <TextCard style={{color: "red", textAlign: 'center'}}>You lost :(</TextCard>
+          <TextCard style={{color: "transparent", textAlign: 'center'}}>You lost :(</TextCard>
           )
         }
 

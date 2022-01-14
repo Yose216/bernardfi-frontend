@@ -11,7 +11,7 @@ import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
 import FlexLayout from 'components/layout/Flex'
 import Page from 'components/layout/Page'
 import Container from 'components/layout/Container'
-import { useFarms, usePriceBnbBusd, usePriceCakeBusd, useNfts} from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePriceCakeBusd, useNfts, usePrices} from 'state/hooks'
 import useRefresh from 'hooks/useRefresh'
 import { fetchFarmUserDataAsync } from 'state/actions'
 import { QuoteToken } from 'config/constants/types'
@@ -29,7 +29,8 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
   const TranslateString = useI18n()
   const farmsLP = useFarms()
   const cakePrice = usePriceCakeBusd()
-  const bnbPrice = usePriceBnbBusd()
+  const prices = usePrices()[0]
+  const bnbPrice = prices.bnbPrice
   const { account, ethereum }: { account: string; ethereum: provider } = useWallet()
   const {tokenMode} = farmsProps;
 
@@ -63,7 +64,6 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
         //   return farm
         // }
 
-
         const cakeRewardPerBlock = new BigNumber(farm.BONESPerBlock || 1).times(new BigNumber(farm.poolWeight)) .div(new BigNumber(10).pow(18))
         const cakeRewardPerYear = cakeRewardPerBlock.times(BLOCKS_PER_YEAR)
 
@@ -71,8 +71,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
 
         let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 
+
         if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-          totalValue = totalValue.times(bnbPrice);
+          totalValue = totalValue.times(new BigNumber(bnbPrice));
         }
 
         if(totalValue.comparedTo(0) > 0){
@@ -86,7 +87,7 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           key={farm.pid}
           farm={farm}
           removed={removed}
-          bnbPrice={bnbPrice}
+          bnbPrice={new BigNumber(bnbPrice)}
           cakePrice={cakePrice}
           ethereum={ethereum}
           account={account}
@@ -143,6 +144,9 @@ const Farms: React.FC<FarmsProps> = (farmsProps) => {
           </Heading>
           <Text color="red" style={{ textAlign: 'center' }}>
             Be careful : If you sell or transfer your NFT while staking, you will lose your staking rewards.
+          </Text>
+          <Text color="#ffc00b" style={{ textAlign: 'center' }}>
+            Warning : BERN token has a 10% tax on all transactions so choose your staking pool wisely. We will remove this tax on BERN v2 to adapt it to staking. Thanks for your understanding.
           </Text>
         </div>
         :
@@ -271,6 +275,13 @@ const FlexFarm = styled.div`
 display: flex;
 justify-content: center;
 flex-wrap: wrap;
+& > * {
+  min-width: 280px;
+  max-width: 25%;
+  width: 100%;
+  margin: 0 30px;
+  margin-bottom: 32px;
+}
 
 `
 const Section = styled.div`
@@ -310,7 +321,7 @@ const FlexToken = styled(Flex)`
   padding-bottom: 25px;
   & > * {
     min-width: 380px;
-    max-width: 49%;
+    max-width: 30%;
     width: 100%;
     margin: 0 30px;
     margin-bottom: 32px;

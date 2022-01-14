@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
-import { ButtonMenu, ButtonMenuItem } from '@pancakeswap-libs/uikit'
+import { ButtonMenu, ButtonMenuItem, Heading } from '@pancakeswap-libs/uikit'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import PastLotteryDataContext from 'contexts/PastLotteryDataContext'
 import { getLotteryIssueIndex } from 'utils/lotteryUtils'
@@ -71,7 +71,9 @@ const Lottery: React.FC = () => {
           </ButtonMenu>
         </Wrapper>
         <Divider />
-
+        <Heading size="lg" color="#ffc00b" mb="24px" style={{textAlign: 'center'}}>
+          Lottery is under maintenance. Will be back soon
+        </Heading>
         <PastLotteryDataContext.Provider
           value={{ historyError, historyData, mostRecentLotteryNumber, currentLotteryNumber }}
         >

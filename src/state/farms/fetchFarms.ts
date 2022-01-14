@@ -60,17 +60,35 @@ const fetchFarms = async () => {
         quoteTokenDecimals
       ] = await multicall(erc20, calls)
 
+      const [info, totalAllocPoint, BONESPerBlock] = await multicall(masterchefABI, [
+        {
+          address: getMasterChefAddress(),
+          name: 'poolInfo',
+          params: [farmConfig.pid],
+        },
+        {
+          address: getMasterChefAddress(),
+          name: 'totalAllocPoint',
+        },
+        {
+          address: getMasterChefAddress(),
+          name: 'BONESPerBlock',
+        },
+      ])
+
       let tokenAmount;
       let lpTotalInQuoteToken;
       let tokenPriceVsQuote;
       if(farmConfig.isTokenOnly){
-        tokenAmount = new BigNumber(lpTokenBalanceMC).div(new BigNumber(10).pow(tokenDecimals));
+        tokenAmount = new BigNumber(info.totalLp._hex).div(new BigNumber(10).pow(tokenDecimals));
         if(farmConfig.tokenSymbol === QuoteToken.BUSD && farmConfig.quoteTokenSymbol === QuoteToken.BUSD){
           tokenPriceVsQuote = new BigNumber(1);
         }else{
           tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
         }
+
         lpTotalInQuoteToken = tokenAmount.times(tokenPriceVsQuote);
+
       }else{
         // Ratio in % a LP tokens that are in staking, vs the total number in circulation
         const lpTokenRatio = new BigNumber(lpTokenBalanceMC).div(new BigNumber(lpTotalSupply))
@@ -89,27 +107,10 @@ const fetchFarms = async () => {
         if(tokenAmount.comparedTo(0) > 0){
           tokenPriceVsQuote = quoteTokenAmount.div(tokenAmount);
         }else{
-          console.log(quoteTokenBlanceLP.toString())
-          console.log(tokenBalanceLP.toString())
           tokenPriceVsQuote = new BigNumber(quoteTokenBlanceLP).div(new BigNumber(tokenBalanceLP));
         }
       }
 
-      const [info, totalAllocPoint, BONESPerBlock] = await multicall(masterchefABI, [
-        {
-          address: getMasterChefAddress(),
-          name: 'poolInfo',
-          params: [farmConfig.pid],
-        },
-        {
-          address: getMasterChefAddress(),
-          name: 'totalAllocPoint',
-        },
-        {
-          address: getMasterChefAddress(),
-          name: 'BONESPerBlock',
-        },
-      ])
 
 
       const allocPoint = new BigNumber(info.allocPoint._hex)

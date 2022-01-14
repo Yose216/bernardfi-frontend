@@ -3,6 +3,7 @@ import farmsReducer from './farms'
 import poolsReducer from './pools'
 import betsReducer from './bets'
 import nftsReducer from './nfts'
+import pricesReducer from './prices'
 
 export default configureStore({
   devTools: process.env.NODE_ENV !== 'production',
@@ -11,5 +12,6 @@ export default configureStore({
     pools: poolsReducer,
     bets: betsReducer,
     nfts: nftsReducer,
+    prices: pricesReducer,
   },
 })

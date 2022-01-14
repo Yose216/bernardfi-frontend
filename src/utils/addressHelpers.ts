@@ -29,3 +29,6 @@ export const getBarrelLPAddress = () => {
 export const getBernLPAddress = () => {
   return addresses.bernLp[chainId]
 }
+export const getBnbLPAddress = () => {
+  return addresses.bnbLp[chainId]
+}

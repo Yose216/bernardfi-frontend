@@ -193,7 +193,14 @@ const FarmCard: React.FC<FarmCardProps> = ({ farm, removed, cakePrice, bnbPrice,
       </Flex>
       <CardActionsContainer farm={farm} ethereum={ethereum} account={account} />
       <Divider />
+      <Flex justifyContent='center'>
+        { farm.isTokenOnly ?
+          null
 
+          :
+          <a href="https://swap.bernard.finance/#/add/0x612b5c1a2d7e94d03dddd53d459d4b944903497d/0xe9e7cea3dedca5984780bafc599bd69add087d56" style={{textDecoration: 'underline', color: '#5DCE80'}}>Add liquidity</a>
+        }
+      </Flex>
     </FCard>
   )
 }

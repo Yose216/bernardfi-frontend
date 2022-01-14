@@ -5,7 +5,7 @@ import { Heading, Text, BaseLayout, Flex, Button, Card, CardBody, CardHeader, Fa
 import useI18n from 'hooks/useI18n'
 import { useWallet } from '@binance-chain/bsc-use-wallet'
 import { provider } from 'web3-core'
-import { useFarms, usePriceBnbBusd, usePriceCakeBusd, useBets } from 'state/hooks'
+import { useFarms, usePriceBnbBusd, usePriceCakeBusd, useBets, usePrices } from 'state/hooks'
 import { useTotalRewards } from 'hooks/useTickets'
 import Page from 'components/layout/Page'
 import { BLOCKS_PER_YEAR, CAKE_PER_BLOCK, CAKE_POOL_PID } from 'config'
@@ -150,11 +150,11 @@ const Home: React.FC = () => {
   const farmsLP = useFarms()
   const bets = useBets()
   const lastBet = bets.slice(-1)[0]
-
   const cakePrice = usePriceCakeBusd()
-  const bnbPrice = usePriceBnbBusd()
   const bonesBalance = getBalanceNumber(useTokenBalance(getCakeAddress()))
   let lotteryPrizeAmount = +(getBalanceNumber(useTotalRewards()).toFixed(0))
+  const prices = usePrices()[0]
+  const bnbPrice = prices.bnbPrice
 
   if (cakePrice.toNumber() > 0) {
      lotteryPrizeAmount *= cakePrice.toNumber()
@@ -176,7 +176,7 @@ const Home: React.FC = () => {
     let totalValue = new BigNumber(farm.lpTotalInQuoteToken || 0);
 
     if (farm.quoteTokenSymbol === QuoteToken.BNB) {
-      totalValue = totalValue.times(bnbPrice);
+      totalValue = totalValue.times(new BigNumber(bnbPrice));
     }
 
     if(totalValue.comparedTo(0) > 0){
