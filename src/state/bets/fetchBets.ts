@@ -61,6 +61,33 @@ const fetchBets = async (account) => {
           b.away = dataJson.away;
           b.type = dataJson.type;
           b.startDate = dataJson.date;
+          if (dataJson.category) {
+            b.category = dataJson.category
+          } else {
+            if (id === 2) {
+              b.category = 'Football'
+            } else if (id === 3) {
+              b.category = 'Football'
+            } else if (id === 4) {
+              b.category = 'Football'
+            } else {
+              b.category = 'none'
+            }
+          }
+
+          if (dataJson.subCategory) {
+            b.subCategory = dataJson.subCategory
+          } else {
+            if (id === 2) {
+              b.subCategory = 'Super Cup'
+            } else if (id === 3) {
+              b.subCategory = 'Super Cup'
+            } else if (id === 4) {
+              b.subCategory = 'Premier League'
+            } else {
+              b.category = 'none'
+            }
+          }
         }
 
       } catch (Error) {

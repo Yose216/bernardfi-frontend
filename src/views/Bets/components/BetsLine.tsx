@@ -61,13 +61,27 @@ const BetsLine: React.FC<Props> = ({ b }) => {
     }
   }
 
+  let colorSport = ''
+  if (b.category === 'Football') {
+    colorSport = '#00adea'
+  } else if (b.category === 'Basket-Ball') {
+    colorSport = '#E47041'
+  } else if (b.category === 'Tennis') {
+    colorSport = '#dfff4f'
+  } else if (b.category === 'Rugby') {
+    colorSport = '#E7DFCC'
+  } else {
+    colorSport = '#FFFFFF'
+  }
+
   return(
     <div key={b.id} style={{borderBottom: '#eeeeee52 1px solid', padding: '20px 0'}}>
       <FlexCard justifyContent='space-between' >
-        <TextCard>{b.name} <br/><span style={{fontSize: '13px'}}>({formatDate(b.startDate)})</span></TextCard>
-        <TextCard>{b.home} ({percentHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.homeBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
-        <TextCard>DRAW ({percentDraw.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.drawBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span> </TextCard>
-        <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px'}}>{getBalanceNumber(b.awayBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
+        <TextCard style={{color: colorSport}}>#{b.id} {b.category} - {b.subCategory}</TextCard>
+        <TextCard style={{fontWeight: 'bold'}}>{b.name} <br/><span style={{fontSize: '13px'}}>({formatDate(b.startDate)})</span></TextCard>
+        <TextCard>{b.home} ({percentHome.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px', color: '#5DCE80', fontWeight: 'bold'}}>{getBalanceNumber(b.homeBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
+        <TextCard>DRAW ({percentDraw.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px', color: '#5DCE80', fontWeight: 'bold'}}>{getBalanceNumber(b.drawBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span> </TextCard>
+        <TextCard >{b.away} ({percentAway.toLocaleString(undefined, { maximumFractionDigits: 0 })}%)<br/> <span style={{fontSize: '13px', color: '#5DCE80', fontWeight: 'bold'}}>{getBalanceNumber(b.awayBones).toLocaleString(undefined, {maximumFractionDigits: 2,})} $BONES</span></TextCard>
         {!b.finished && !b.amountBet ?
           <>
             <ButtonCard onClick={onPresentBuy} variant="primary" >
@@ -156,6 +170,7 @@ const InputBets = styled(Input)`
 `
 const TextCard = styled(Text)`
   width: 20%;
+  padding-left: 10px;
   @media screen and (max-width: 768px) {
     width: 100%;
     padding-bottom: 20px;

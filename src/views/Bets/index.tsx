@@ -35,22 +35,41 @@ const Bets: React.FC = () => {
   const allowance = useBetsAllowance(account)
   const { onApprove } = useBetsApprove(account)
   const betsSport = [];
+  const betsSportOld = [];
   const betsOther = [];
+  const betsOtherOld = [];
 
   let betsWin = 0;
   if (bets) {
     bets.map((b) => {
         if (b.type === 'sport') {
-          betsSport.push(b);
-        } else {
-          betsOther.push(b);
+          if (!b.finished) {
+            betsSport.push(b);
+          } else {
+            betsSportOld.push(b);
+
+          }
+        }
+        if(b.type === 'other') {
+          if (!b.finished) {
+            betsOther.push(b);
+          } else {
+            betsOther.push(b);
+
+          }
         }
 
         if (b.claimable === true) {
           betsWin += 1
         }
+
       return 0;
     })
+
+    betsSport.sort((a,b)=> (a.startDate > b.startDate ? 1 : -1))
+    betsSportOld.sort((a,b)=> (a.startDate > b.startDate ? 1 : -1))
+    betsOther.sort((a,b)=> (a.startDate > b.startDate ? 1 : -1))
+    betsOtherOld.sort((a,b)=> (a.startDate > b.startDate ? 1 : -1))
   }
 
   const handleApprove = useCallback(async () => {
@@ -161,7 +180,7 @@ const Bets: React.FC = () => {
 
               { allowance.toString() !== "0" && account ?
                 betsSport.map(b => {
-                  if (b.finished === false && account) {
+                  if (account) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
@@ -178,8 +197,8 @@ const Bets: React.FC = () => {
                     showText="Old Bets"
                   />
                   <ExpandingWrapper expanded={showExpandableSection}>
-                  {betsSport.map(b => {
-                    if (b.finished === true) {
+                  {betsSportOld.map(b => {
+                    if (account) {
                       return(<BetsLine b={b} key={b.id}/>)
                     }
 
@@ -215,7 +234,7 @@ const Bets: React.FC = () => {
               </Wrapper>
               {allowance.toString() !== "0" && account  ?
                 betsOther.map(b => {
-                  if (b.finished === false && account ) {
+                  if (account ) {
                     return(<BetsLine b={b} key={b.id}/>)
                   }
 
@@ -231,8 +250,8 @@ const Bets: React.FC = () => {
                     showText="Old Bets"
                   />
                   <ExpandingWrapper expanded={showExpandableSectionOther}>
-                  {betsOther.map(b => {
-                    if (b.finished === true) {
+                  {betsOtherOld.map(b => {
+                    if (account) {
                       return(<BetsLine b={b} key={b.id}/>)
                     }
 
@@ -296,7 +315,7 @@ const CardBodyToken = styled.div`
   },
   align-self: baseline;
   border-radius: 32px;
-  width: 80%;
+  width: 100%;
   box-shadow: 0px 2px 12px -8px rgba(25, 19, 38, 0.1), 0px 1px 1px rgba(25, 19, 38, 0.05);
   display: flex;
   flex-direction: column;

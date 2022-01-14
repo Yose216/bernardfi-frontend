@@ -233,7 +233,7 @@ const Home: React.FC = () => {
                 </div>
 
                 <div style={{marginTop: '30px'}}>
-                  <Text color="textSubtle">Try ou superpools now</Text>
+                  <Text color="textSubtle">Try our superpools now</Text>
                 </div>
 
                 <div style={{marginTop: '30px'}}>

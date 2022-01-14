@@ -44,6 +44,8 @@ export interface Bets extends BetsConfig {
   type: string
   claimed: boolean
   claimable: boolean
+  category: string
+  subCategory: string
 }
 
 export interface Nfts extends NftsConfig {
